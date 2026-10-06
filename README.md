@@ -272,7 +272,7 @@ Source rules cannot see browser defaults. In the worked example, B's table heade
 | `R09` | border radius outside the allowed list (pill and circle opt-in) |
 | `R10` | shadow outside the allowed list |
 
-On the Airlock pages it found B's four `th` cells at weight 700 and nothing else, and flagged 12 radii, 12 shadow variants and 5 stray font sizes on A and the legacy home page. A test renders every recipe example against the law, so a vocabulary gap fails the suite instead of surfacing in a page.
+On the Airlock pages it found B's four `th` cells at weight 700 and nothing else, and flagged A and the legacy home page across all five rules (A: 5 off-law font sizes, 7 off-law radii, 7 off-law shadows, weight 700 on 16 elements, and a system font). A test renders every recipe example against the law, so a vocabulary gap fails the suite instead of surfacing in a page.
 
 ## Results from the worked example
 
