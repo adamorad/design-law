@@ -1,4 +1,5 @@
 import { auditRoutes, type Metrics } from "../lib/render-metrics";
+import { COMPUTED_RULES, checkComputed, loadLaw } from "../lib/computed-law";
 
 export type RenderFinding = {
   route: string;
@@ -10,7 +11,7 @@ export type RenderFinding = {
   fix: string;
 };
 
-export async function renderCheck(opts: { base: string; routes: string[]; outDir: string }): Promise<{ findings: RenderFinding[]; metrics: Metrics[] }> {
+export async function renderCheck(opts: { base: string; routes: string[]; outDir: string; law?: string }): Promise<{ findings: RenderFinding[]; metrics: Metrics[] }> {
   const metrics = await auditRoutes({ base: opts.base, routes: opts.routes, outDir: opts.outDir, label: "check" });
   const findings: RenderFinding[] = [];
   for (const m of metrics) {
@@ -25,6 +26,13 @@ export async function renderCheck(opts: { base: string; routes: string[]; outDir
       findings.push({ ...base, rule: "R03", section: "5.8", message: `text clipped: "${c.text}" (${c.selector}; ${c.reason})`, fix: "Remove fixed heights and overflow-hidden on text containers, or let the text wrap." });
     for (const o of m.overlaps)
       findings.push({ ...base, rule: "R04", section: "5.8", message: `text overlaps text (${o.area}px2): ${o.a} x ${o.b}`, fix: "Remove absolute positioning or negative margins between text blocks." });
+  }
+  if (opts.law) {
+    const law = loadLaw(opts.law);
+    for (const f of checkComputed(metrics, law)) {
+      const meta = COMPUTED_RULES.find((r) => r.id === f.rule)!;
+      findings.push({ route: f.route, viewport: f.viewport, scheme: f.scheme, rule: f.rule, section: f.section, message: `${meta.title}: ${f.message}`, fix: meta.fix });
+    }
   }
   return { findings, metrics };
 }

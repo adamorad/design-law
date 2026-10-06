@@ -1,0 +1,9 @@
+{
+  "sections": { "fontSize": "2.3", "fontWeight": "2.2", "fontFamily": "2.1", "radius": "3.1", "shadow": "4.2" },
+  "fontSizes": { "px": [12, 13, 14, 16], "fluid": [{ "min": 32, "max": 51.2 }, { "min": 24, "max": 35.2 }] },
+  "fontWeights": [400, 500, 600],
+  "fontFamilies": ["Inter", "JetBrains Mono"],
+  "radii": { "px": [8, 16], "pill": true, "circle": true },
+  "shadows": ["none", "C 0px 16px 48px 0px, C 0px 1px 0px 0px inset"],
+  "ignoreSelectors": ["visually-hidden", "ds-orb"]
+}

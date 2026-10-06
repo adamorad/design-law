@@ -31,7 +31,7 @@ hides the Airlock column at 390px. The method bought consistency again, not layo
 
 Note 1: clipped text on home is the install commands cut off by an ellipsis (1 at 1280, 2 at 390). The "overlap" the audit reports between an install command and its Copy button is a measurement artifact of ellipsised text and is not counted.
 A's 186 static findings are mostly 156 `UI01` hits: it reused legacy class names (`compare-card`, `tool-pill`, ...) that are not `ds-*`.
-B's 700 weight: 4 elements at 1280. I did not record per-element weights; `ds.css` never sets a weight on `.ds-table th` and browsers bold `th` by default, and B has 4 column headers, so that is the likely source. If so it is a gap in the vocabulary that the static CSS rule cannot see. Unverified.
+B's 700 weight: 4 elements at 1280, confirmed after the run with the computed-style check (`design-law.json`, rules R06 to R10): they are B's four table column headers, which browsers bold by default because `ds.css` never set a weight on `th`. No source-level rule can see that. B's page has no other computed-style violation. `ds.css` now sets `.ds-table th { font-weight: 600 }` (the measured arms ran before this fix).
 
 ## What B's first check caught
 

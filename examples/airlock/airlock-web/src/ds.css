@@ -217,6 +217,7 @@ a { color: inherit; }
 /* ── Table (6.5) ─────────────────────────────────────────────── */
 .ds-table-wrap { width: 100%; overflow-x: auto; padding: var(--ds-s-2) var(--ds-s-4); }
 .ds-table { width: 100%; border-collapse: collapse; min-width: 480px; font-size: 14px; color: var(--ds-text-2); }
+.ds-table th { font-weight: 600; }
 .ds-table th, .ds-table td { padding: var(--ds-s-3); text-align: center; border-bottom: 1px solid var(--ds-border); }
 .ds-table th:first-child, .ds-table td:first-child { text-align: left; color: var(--ds-text); font-weight: 500; }
 .ds-table tbody tr:last-child th, .ds-table tbody tr:last-child td { border-bottom: 0; }

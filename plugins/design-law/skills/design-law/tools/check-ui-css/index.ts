@@ -1,16 +1,18 @@
 import { existsSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { checkPaths } from "./static";
+import { COMPUTED_RULES } from "../lib/computed-law";
 import { ALL_RULES, RENDER_RULES } from "./rules";
 
 const args = process.argv.slice(2);
 const flag = (k: string) => args.includes("--" + k);
 const val = (k: string) => { const i = args.indexOf("--" + k); return i > -1 ? args[i + 1] : undefined; };
-const valueFlags = new Set(["--render", "--routes", "--out", "--json", "--ds-css"]);
+const valueFlags = new Set(["--render", "--routes", "--out", "--json", "--ds-css", "--law"]);
 const paths = args.filter((a, i) => !a.startsWith("--") && !valueFlags.has(args[i - 1]));
 
 if (flag("rules")) {
   for (const r of [...ALL_RULES, ...RENDER_RULES]) console.log(`${r.id}  DESIGN.md ${r.section}  ${r.title}`);
+  for (const r of COMPUTED_RULES) console.log(`${r.id}  DESIGN.md (from design-law.json)  ${r.title}`);
   process.exit(0);
 }
 
@@ -31,7 +33,8 @@ if (paths.length) {
 const base = val("render");
 if (base) {
   const { renderCheck } = await import("./render");
-  const r = await renderCheck({ base, routes: (val("routes") ?? "/").split(","), outDir: val("out") ?? "design-system/shots/check" });
+  const lawPath = val("law") ?? (existsSync("design-system/design-law.json") ? "design-system/design-law.json" : undefined);
+  const r = await renderCheck({ law: lawPath, base, routes: (val("routes") ?? "/").split(","), outDir: val("out") ?? "design-system/shots/check" });
   total += r.findings.length;
   json.render = r.findings;
   for (const x of r.findings) out.push(`${x.route} @${x.viewport} ${x.scheme}  ${x.rule} DESIGN.md ${x.section}  ${x.message}\n    fix: ${x.fix}`);

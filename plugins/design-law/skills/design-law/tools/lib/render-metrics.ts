@@ -9,6 +9,17 @@ export const VIEWPORTS: Viewport[] = [
 ];
 export const SCHEMES: Scheme[] = ["light", "dark"];
 
+export type ComputedRecord = {
+  selector: string;
+  text: string;
+  hasText: boolean;
+  fontSize: number;
+  fontWeight: number;
+  fontFamily: string;
+  radius: string; // "none" | "pill" | "circle" | "<n>px"
+  shadow: string; // colours replaced by C
+};
+
 export type Metrics = {
   route: string;
   viewport: string;
@@ -44,6 +55,7 @@ export type Metrics = {
   };
   clipped: Array<{ selector: string; text: string; reason: string }>;
   overlaps: Array<{ a: string; b: string; area: number }>;
+  computed: ComputedRecord[];
 };
 
 // Runs inside the page. Must be self-contained.
@@ -146,6 +158,7 @@ function collect() {
     features: { gradientBackgrounds: 0, gradientText: 0, backdropFilters: 0, filterBlurs: 0, animated: 0 },
     clipped: [] as any[],
     overlaps: [] as any[],
+    computed: [] as any[],
     elementsBeyondViewport: [] as string[],
   };
 
@@ -159,6 +172,37 @@ function collect() {
     if (cs.backdropFilter && cs.backdropFilter !== "none") out.features.backdropFilters++;
     if (/blur/.test(cs.filter)) out.features.filterBlurs++;
     if (cs.animationName && cs.animationName !== "none") out.features.animated++;
+
+    {
+      const r0 = el.getBoundingClientRect();
+      const tl = parseFloat(cs.borderTopLeftRadius);
+      const rawTL = cs.borderTopLeftRadius;
+      const radius =
+        !tl && !/%/.test(rawTL)
+          ? "none"
+          : /%/.test(rawTL) && parseFloat(rawTL) >= 50
+            ? "circle"
+            : tl >= 999 || (tl > 0 && tl >= Math.min(r0.width, r0.height) / 2 - 0.5)
+              ? "pill"
+              : tl + "px";
+      const shadow =
+        cs.boxShadow === "none"
+          ? "none"
+          : cs.boxShadow.replace(/rgba?\([^)]*\)|oklab\([^)]*\)|color\([^)]*\)/g, "C").trim();
+      const own = hasOwnText(el);
+      if (own || radius !== "none" || shadow !== "none") {
+        out.computed.push({
+          selector: sel(el),
+          text: own ? (el.textContent || "").trim().slice(0, 40) : "",
+          hasText: own,
+          fontSize: parseFloat(cs.fontSize),
+          fontWeight: parseInt(cs.fontWeight, 10) || 400,
+          fontFamily: cs.fontFamily.split(",")[0].replace(/["']/g, "").trim(),
+          radius,
+          shadow,
+        });
+      }
+    }
 
     if (cs.borderRadius !== "0px") {
       const r = el.getBoundingClientRect();
@@ -406,6 +450,7 @@ export async function auditRoutes(opts: {
           },
           clipped: m.clipped,
           overlaps: m.overlaps,
+          computed: m.computed,
         });
       }
       await ctx.close();

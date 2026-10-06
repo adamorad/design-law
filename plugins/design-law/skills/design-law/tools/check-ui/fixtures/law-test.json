@@ -1,0 +1,9 @@
+{
+  "sections": { "fontSize": "2.3", "fontWeight": "2.2", "fontFamily": "2.1", "radius": "3.1", "shadow": "4.2" },
+  "fontSizes": { "px": [12, 14, 16], "fluid": [{ "min": 28, "max": 40 }] },
+  "fontWeights": [400, 600],
+  "fontFamilies": ["sans-serif"],
+  "radii": { "px": [8, 16], "pill": true, "circle": true },
+  "shadows": ["C 0px 16px 48px 0px"],
+  "ignoreSelectors": ["visually-hidden"]
+}

@@ -1,12 +1,13 @@
 import { chromium } from "playwright";
 import { auditRoutes, type Metrics } from "../lib/render-metrics";
+import { COMPUTED_RULES, checkComputed, loadLaw } from "../lib/computed-law";
 import { RENDER_RULES } from "./rules";
 
 export type RenderFinding = { route: string; viewport: string; scheme: string; section: string; rule: string; message: string; fix: string };
 
 const rule = (id: string) => RENDER_RULES.find((r) => r.id === id)!;
 
-export async function renderCheck(opts: { base: string; routes: string[]; outDir: string }): Promise<{ findings: RenderFinding[]; metrics: Metrics[] }> {
+export async function renderCheck(opts: { base: string; routes: string[]; outDir: string; law?: string }): Promise<{ findings: RenderFinding[]; metrics: Metrics[] }> {
   const metrics = await auditRoutes({ base: opts.base, routes: opts.routes, outDir: opts.outDir, label: "check" });
   const findings: RenderFinding[] = [];
   const push = (m: { route: string; viewport: string; scheme: string }, id: string, message: string) =>
@@ -40,5 +41,12 @@ export async function renderCheck(opts: { base: string; routes: string[]; outDir
     for (const b of hidden) push({ route, viewport: "390", scheme: "dark" }, "R05", b);
   }
   await browser.close();
+  if (opts.law) {
+    const law = loadLaw(opts.law);
+    for (const f of checkComputed(metrics, law)) {
+      const meta = COMPUTED_RULES.find((r) => r.id === f.rule)!;
+      findings.push({ route: f.route, viewport: f.viewport, scheme: f.scheme, rule: f.rule, section: f.section, message: `${meta.title}: ${f.message}`, fix: meta.fix });
+    }
+  }
   return { findings, metrics };
 }
