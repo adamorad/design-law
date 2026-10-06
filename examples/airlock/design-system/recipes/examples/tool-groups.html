@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recipe example: tool-groups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../airlock-web/src/ds.css">
+</head>
+<body>
+<div class="ds-orbs" aria-hidden="true">
+  <div class="ds-orb ds-orb--1"></div>
+  <div class="ds-orb ds-orb--2"></div>
+  <div class="ds-orb ds-orb--3"></div>
+</div>
+<section class="ds-section" id="tools">
+  <div class="ds-container ds-container--narrow">
+    <div class="ds-stack ds-gap-3">
+      <span class="ds-label">22 MCP Tools</span>
+      <h2 class="ds-h2">Everything agents need to coordinate.</h2>
+      <p class="ds-body">Five groups: Locks, Notes and atomic state, Presence, Events, and Tasks.</p>
+    </div>
+
+    <div class="ds-stack ds-gap-3" role="list" aria-label="Available MCP tools">
+      <div class="ds-surface-1 ds-card" role="listitem">
+        <span class="ds-label">Locks</span>
+        <div class="ds-row">
+          <span class="ds-pill">lock_resource</span>
+          <span class="ds-pill">unlock_resource</span>
+          <span class="ds-pill">renew_lock</span>
+          <span class="ds-pill">list_locks</span>
+          <span class="ds-pill">lock_resources</span>
+        </div>
+      </div>
+      <div class="ds-surface-1 ds-card" role="listitem">
+        <span class="ds-label">Presence</span>
+        <div class="ds-row">
+          <span class="ds-pill">register_agent</span>
+          <span class="ds-pill">unregister_agent</span>
+          <span class="ds-pill">list_agents</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,2 +1,0 @@
-render: 0 finding(s) at http://localhost:3202 routes /work/lin-agent
-OK: 0 findings

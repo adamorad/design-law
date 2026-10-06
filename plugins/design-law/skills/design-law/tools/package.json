@@ -6,11 +6,16 @@
     "@types/node": "^26.6.4",
     "playwright": "^1.63.0",
     "tsx": "^4.23.15",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "postcss": "^8.5.29",
+    "parse5": "^8.0.1"
   },
   "scripts": {
     "check": "tsx check-ui/index.ts",
     "test": "tsx --test check-ui/tests/*.test.ts",
-    "audit": "tsx render-audit.ts"
+    "audit": "tsx render-audit.ts",
+    "check:css": "tsx check-ui-css/index.ts",
+    "test:css": "tsx --test check-ui-css/tests/*.test.ts",
+    "scan:css": "tsx scan-css.ts"
   }
 }

@@ -1,0 +1,4218 @@
+{
+ "generated": "2026-10-06T10:01:27.811Z",
+ "commit": "adb287c",
+ "routes": [
+  "/"
+ ],
+ "notes": [
+  "Site is dark-only; light and dark renders are identical, so counts are per-width (x2) not per-theme.",
+  "Gradient text (background-clip:text) is indeterminate for contrast and counted in features.gradientText.",
+  "Fixed blurred orbs behind content are ignored when compositing backgrounds.",
+  "overlaps=1 (install code vs Copy button) is a range-rect artifact of text-overflow:ellipsis, not a real overlap.",
+  "elementsBeyondViewport are the decorative fixed orbs (body has overflow-x hidden).",
+  "Corrected 2026-10-06: clipped-text check no longer counts cells inside a deliberate overflow-x scroller (first run over-reported 26 at 390)."
+ ],
+ "render": {
+  "summary": {
+   "distinctFontSizes": 21,
+   "distinctFontWeights": 4,
+   "distinctTextColors": 50,
+   "distinctRadii": 12,
+   "distinctShadows": 8,
+   "contrastFailures": 364,
+   "horizontalScrollPages": 0,
+   "elementsBeyondViewport": 8,
+   "clipped": 14,
+   "overlaps": 4
+  },
+  "pages": [
+   {
+    "route": "/",
+    "viewport": "1280",
+    "scheme": "light",
+    "textElements": 182,
+    "fontSizes": {
+     "11px": 19,
+     "51.2px": 2,
+     "16px": 13,
+     "13.5px": 9,
+     "11.5px": 24,
+     "12px": 30,
+     "40px": 2,
+     "15px": 5,
+     "14px": 7,
+     "17px": 12,
+     "12.5px": 6,
+     "13px": 25,
+     "35.2px": 2,
+     "10px": 24,
+     "32px": 1,
+     "14.5px": 1
+    },
+    "fontWeights": {
+     "400": 105,
+     "500": 11,
+     "600": 39,
+     "700": 27
+    },
+    "textColors": {
+     "#997fe5": 1,
+     "#a1a1b9": 1,
+     "#ececec": 5,
+     "#78787d": 3,
+     "#997fe3": 1,
+     "#87878b": 1,
+     "#545459": 2,
+     "#6544b2": 4,
+     "#c2c2c4": 3,
+     "#22c55e": 1,
+     "#806bc0": 2,
+     "#919194": 2,
+     "#54545a": 3,
+     "#f87171": 1,
+     "#606065": 1,
+     "#4e4e54": 7,
+     "#714cc8": 1,
+     "#f0f0ff": 1,
+     "#8b5cf6": 6,
+     "#7c7c91": 1,
+     "#ececed": 3,
+     "#e8e8f8": 3,
+     "#646477": 3,
+     "#937add": 1,
+     "#b8b8c9": 6,
+     "#47474d": 12,
+     "#fbbf24": 6,
+     "#34d399": 8,
+     "#69697c": 1,
+     "#404046": 1,
+     "#7d7d81": 3,
+     "#7f54e1": 1,
+     "#ededed": 5,
+     "#57575d": 2,
+     "#5d5d62": 12,
+     "#d0d0d2": 12,
+     "#a78bfa": 1,
+     "#ececee": 1,
+     "#54515f": 1,
+     "#5a5665": 6,
+     "#d0cfd3": 6,
+     "#86868a": 1,
+     "#734ccc": 1,
+     "#8871cc": 1,
+     "#6b5aa0": 5,
+     "#8055e2": 22,
+     "#7f7f84": 3,
+     "#88888c": 2,
+     "#848488": 3,
+     "#8d8d90": 3
+    },
+    "radii": {
+     "50%": 3,
+     "pill/circle": 34,
+     "11px": 1,
+     "7px": 4,
+     "16px": 5,
+     "20px": 1,
+     "12px": 12,
+     "0px": 1,
+     "18px": 3,
+     "4px": 3,
+     "8px": 22,
+     "10px": 3
+    },
+    "shadows": {
+     "C 0px 24px 56px 0px, C 0px 1px 0px 0px inset": 2,
+     "C 0px 16px 48px 0px, C 0px 1px 0px 0px inset": 1,
+     "C 0px -4px 28px 0px": 1,
+     "C 0px 0px 8px 0px": 2,
+     "C 0px 12px 40px 0px, C 0px 1px 0px 0px inset": 2,
+     "C 0px 1px 0px 0px inset": 6,
+     "C 0px 0px 0px 2px inset": 18,
+     "C 0px 0px 40px 0px": 1
+    },
+    "contrastFailures": [
+     {
+      "selector": "div.fold1-inner > div.install-cmd-wrap > button.copy-btn",
+      "text": "Copy",
+      "ratio": 4.29,
+      "required": 4.5,
+      "fg": "#87878b",
+      "bg": "#24242b",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "section.fold1 > div.fold1-inner > p.compat-strip",
+      "text": "Works with Claude · Cursor · Copilot · Cline · Win",
+      "ratio": 3.13,
+      "required": 4.5,
+      "fg": "#606065",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "section.fold1 > a.scroll-indicator",
+      "text": "How does it compare? ↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "section.fold1 > a.scroll-indicator > span.scroll-arrow",
+      "text": "↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.fold4-inner > div.fold4-header > span.fold4-label",
+      "text": "The Landscape",
+      "ratio": 3.35,
+      "required": 4.5,
+      "fg": "#714cc8",
+      "bg": "#0a0a12",
+      "fontSize": 11
+     },
+     {
+      "selector": "tr > th > span.cm-col-sub",
+      "text": "Node · per-session",
+      "ratio": 3.22,
+      "required": 4.5,
+      "fg": "#646477",
+      "bg": "#13131a",
+      "fontSize": 11
+     },
+     {
+      "selector": "tr > th > span.cm-col-sub",
+      "text": "mem0 · graphs",
+      "ratio": 3.22,
+      "required": 4.5,
+      "fg": "#646477",
+      "bg": "#13131a",
+      "fontSize": 11
+     },
+     {
+      "selector": "tr > th > span.cm-col-sub",
+      "text": "Redis · lockfiles",
+      "ratio": 3.22,
+      "required": 4.5,
+      "fg": "#646477",
+      "bg": "#13131a",
+      "fontSize": 11
+     },
+     {
+      "selector": "tr > th.cm-col-airlock > span.cm-col-name",
+      "text": "Airlock",
+      "ratio": 4.01,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#1f1734",
+      "fontSize": 13.5
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "section.fold4 > div.fold4-inner > p.compare-legend",
+      "text": "✓ built in  ·  ~ possible with effort  ·  ✗ not re",
+      "ratio": 3.67,
+      "required": 4.5,
+      "fg": "#69697c",
+      "bg": "#0a0a12",
+      "fontSize": 12.5
+     },
+     {
+      "selector": "div.fold4-inner > p.compare-legend > span.cm-no",
+      "text": "✗",
+      "ratio": 1.91,
+      "required": 4.5,
+      "fg": "#404046",
+      "bg": "#0a0a12",
+      "fontSize": 13
+     },
+     {
+      "selector": "section.fold4 > a.scroll-indicator",
+      "text": "vs. other approaches ↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "section.fold4 > a.scroll-indicator > span.scroll-arrow",
+      "text": "↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.fold3-inner > div.fold3-header > span.fold3-label",
+      "text": "Why Airlock",
+      "ratio": 3.83,
+      "required": 4.5,
+      "fg": "#7f54e1",
+      "bg": "#130e24",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.compare-grid > div.compare-card > div.compare-card-subtitle",
+      "text": "lockfiles · flock · manual scripts",
+      "ratio": 2.5,
+      "required": 4.5,
+      "fg": "#57575d",
+      "bg": "#16161e",
+      "fontSize": 11
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Resource locking",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Shared state",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Persists across restarts",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Multi-agent safe",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Runs as daemon",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Works across tools",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.compare-grid > div.compare-card > div.compare-card-subtitle",
+      "text": "claude code skills · one session",
+      "ratio": 2.5,
+      "required": 4.5,
+      "fg": "#57575d",
+      "bg": "#16161e",
+      "fontSize": 11
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Resource locking",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Shared state",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Persists across restarts",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Multi-agent safe",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Runs as daemon",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--partial > span.compare-row-text > span.compare-row-cat",
+      "text": "Works across tools",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.compare-grid > div.compare-card.compare-card--featured > div.compare-card-subtitle",
+      "text": "airlock · shared daemon",
+      "ratio": 2.45,
+      "required": 4.5,
+      "fg": "#54515f",
+      "bg": "#120d22",
+      "fontSize": 11
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Resource locking",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Shared state",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Persists across restarts",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Multi-agent safe",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Runs as daemon",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Works across tools",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.compare-insight > p > code",
+      "text": "npm-install",
+      "ratio": 4.33,
+      "required": 4.5,
+      "fg": "#86868a",
+      "bg": "#22222a",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "section.fold3 > a.scroll-indicator",
+      "text": "See the 22 MCP tools ↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "section.fold3 > a.scroll-indicator > span.scroll-arrow",
+      "text": "↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.fold2-inner > div.fold2-header > span.fold2-label",
+      "text": "22 MCP Tools",
+      "ratio": 3.26,
+      "required": 4.5,
+      "fg": "#734ccc",
+      "bg": "#130e24",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Locks",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "lock_resource",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "unlock_resource",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "renew_lock",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "list_locks",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "lock_resources",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Notes & State",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "set_note",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "get_note",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "list_notes",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "delete_note",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "set_note_if",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "increment_counter",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Presence",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "register_agent",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "unregister_agent",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "list_agents",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Events",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "signal_event",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "wait_for_event",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "clear_event",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Tasks",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "push_task",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "claim_next_task",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "complete_task",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "fail_task",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "list_tasks",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.step-card > div.step-card-header > div.step-num",
+      "text": "1",
+      "ratio": 3.78,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#251c3d",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > p.step-desc > code",
+      "text": "go install github.com/adamorad/airlock/v2@latest",
+      "ratio": 4.22,
+      "required": 4.5,
+      "fg": "#88888c",
+      "bg": "#27272e",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > div.config-row > code",
+      "text": "brew install adamorad/tap/airlock",
+      "ratio": 4.4,
+      "required": 4.5,
+      "fg": "#848488",
+      "bg": "#1f1f26",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.config-row > button.copy-btn",
+      "text": "Copy",
+      "ratio": 4.02,
+      "required": 4.5,
+      "fg": "#8d8d90",
+      "bg": "#2f2f35",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.step-card-header > div.step-num",
+      "text": "2",
+      "ratio": 3.78,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#251c3d",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > div.config-row > code",
+      "text": "airlock install-service",
+      "ratio": 4.4,
+      "required": 4.5,
+      "fg": "#848488",
+      "bg": "#1f1f26",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.config-row > button.copy-btn",
+      "text": "Copy",
+      "ratio": 4.02,
+      "required": 4.5,
+      "fg": "#8d8d90",
+      "bg": "#2f2f35",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.step-card-header > div.step-num",
+      "text": "3",
+      "ratio": 3.78,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#251c3d",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > p.step-desc > code",
+      "text": "~/.airlock/token",
+      "ratio": 4.22,
+      "required": 4.5,
+      "fg": "#88888c",
+      "bg": "#27272e",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > div.config-row > code",
+      "text": "claude mcp add --transport http airlock http://loc",
+      "ratio": 4.4,
+      "required": 4.5,
+      "fg": "#848488",
+      "bg": "#1f1f26",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.config-row > button.copy-btn",
+      "text": "Copy",
+      "ratio": 4.02,
+      "required": 4.5,
+      "fg": "#8d8d90",
+      "bg": "#2f2f35",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.fold2-inner > div.roadmap-teaser > a",
+      "text": "see the changelog →",
+      "ratio": 4.41,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#121219",
+      "fontSize": 12.5
+     },
+     {
+      "selector": "section.fold2 > a.scroll-indicator",
+      "text": "← Back to top",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     }
+    ],
+    "contrastIndeterminate": 21,
+    "features": {
+     "gradientBackgrounds": 5,
+     "gradientText": 3,
+     "backdropFilters": 36,
+     "filterBlurs": 3,
+     "animated": 0
+    },
+    "overflow": {
+     "docScrollWidth": 1280,
+     "viewportWidth": 1280,
+     "horizontalScroll": false,
+     "elementsBeyondViewport": [
+      "div.bg-orbs > div.orb.orb-2"
+     ]
+    },
+    "clipped": [
+     {
+      "selector": "tr > th.cm-cap-head > span.visually-hidden",
+      "text": "Capability",
+      "reason": "own scrollWidth > clientWidth"
+     },
+     {
+      "selector": "tr > th.cm-cap-head > span.visually-hidden",
+      "text": "Capability",
+      "reason": "own scrollHeight > clientHeight"
+     },
+     {
+      "selector": "div.step-card > div.config-row > code",
+      "text": "claude mcp add --transport http airlock http://loc",
+      "reason": "own scrollWidth > clientWidth"
+     }
+    ],
+    "overlaps": [
+     {
+      "a": "div.step-card > div.config-row > code",
+      "b": "div.step-card > div.config-row > button.copy-btn",
+      "area": 405
+     }
+    ]
+   },
+   {
+    "route": "/",
+    "viewport": "390",
+    "scheme": "light",
+    "textElements": 181,
+    "fontSizes": {
+     "11px": 41,
+     "25.35px": 2,
+     "13.12px": 1,
+     "13.5px": 11,
+     "11.5px": 24,
+     "10.5px": 1,
+     "12px": 7,
+     "20.8px": 4,
+     "15px": 4,
+     "13px": 32,
+     "16px": 12,
+     "17px": 12,
+     "12.5px": 6,
+     "10px": 23,
+     "19.2px": 1
+    },
+    "fontWeights": {
+     "400": 105,
+     "500": 11,
+     "600": 38,
+     "700": 27
+    },
+    "textColors": {
+     "#997fe5": 1,
+     "#a1a1b9": 1,
+     "#ececec": 5,
+     "#78787d": 3,
+     "#997fe3": 1,
+     "#87878b": 1,
+     "#545459": 2,
+     "#6544b2": 4,
+     "#c2c2c4": 3,
+     "#22c55e": 1,
+     "#806bc0": 2,
+     "#919194": 2,
+     "#54545a": 3,
+     "#f87171": 1,
+     "#606065": 1,
+     "#4e4e54": 7,
+     "#714cc8": 1,
+     "#f0f0ff": 1,
+     "#8b5cf6": 6,
+     "#7c7c91": 1,
+     "#ececed": 3,
+     "#e8e8f8": 3,
+     "#646477": 3,
+     "#937add": 1,
+     "#b8b8c9": 6,
+     "#47474d": 12,
+     "#fbbf24": 6,
+     "#34d399": 8,
+     "#69697c": 1,
+     "#404046": 1,
+     "#7d7d81": 3,
+     "#7f54e1": 1,
+     "#ededed": 5,
+     "#57575d": 2,
+     "#5d5d62": 12,
+     "#d0d0d2": 12,
+     "#ececee": 1,
+     "#54515f": 1,
+     "#5a5665": 6,
+     "#d0cfd3": 6,
+     "#86868a": 1,
+     "#734ccc": 1,
+     "#8871cc": 1,
+     "#6b5aa0": 5,
+     "#8055e2": 22,
+     "#7f7f84": 3,
+     "#88888c": 2,
+     "#848488": 3,
+     "#8d8d90": 3
+    },
+    "radii": {
+     "50%": 3,
+     "pill/circle": 33,
+     "11px": 1,
+     "7px": 4,
+     "16px": 5,
+     "20px": 1,
+     "12px": 12,
+     "0px": 1,
+     "18px": 3,
+     "4px": 3,
+     "8px": 22,
+     "10px": 3
+    },
+    "shadows": {
+     "C 0px 24px 56px 0px, C 0px 1px 0px 0px inset": 2,
+     "C 0px 16px 48px 0px, C 0px 1px 0px 0px inset": 1,
+     "C 0px -4px 28px 0px": 1,
+     "C 0px 0px 8px 0px": 2,
+     "C 0px 12px 40px 0px, C 0px 1px 0px 0px inset": 2,
+     "C 0px 1px 0px 0px inset": 6,
+     "C 0px 0px 0px 2px inset": 18,
+     "C 0px 0px 40px 0px": 1
+    },
+    "contrastFailures": [
+     {
+      "selector": "div.fold1-inner > div.install-cmd-wrap > button.copy-btn",
+      "text": "Copy",
+      "ratio": 4.29,
+      "required": 4.5,
+      "fg": "#87878b",
+      "bg": "#24242b",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "section.fold1 > div.fold1-inner > p.compat-strip",
+      "text": "Works with Claude · Cursor · Copilot · Cline · Win",
+      "ratio": 3.13,
+      "required": 4.5,
+      "fg": "#606065",
+      "bg": "#0a0a12",
+      "fontSize": 10.5
+     },
+     {
+      "selector": "section.fold1 > a.scroll-indicator",
+      "text": "How does it compare? ↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "section.fold1 > a.scroll-indicator > span.scroll-arrow",
+      "text": "↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.fold4-inner > div.fold4-header > span.fold4-label",
+      "text": "The Landscape",
+      "ratio": 3.35,
+      "required": 4.5,
+      "fg": "#714cc8",
+      "bg": "#0a0a12",
+      "fontSize": 11
+     },
+     {
+      "selector": "tr > th > span.cm-col-sub",
+      "text": "Node · per-session",
+      "ratio": 3.22,
+      "required": 4.5,
+      "fg": "#646477",
+      "bg": "#13131a",
+      "fontSize": 11
+     },
+     {
+      "selector": "tr > th > span.cm-col-sub",
+      "text": "mem0 · graphs",
+      "ratio": 3.22,
+      "required": 4.5,
+      "fg": "#646477",
+      "bg": "#13131a",
+      "fontSize": 11
+     },
+     {
+      "selector": "tr > th > span.cm-col-sub",
+      "text": "Redis · lockfiles",
+      "ratio": 3.22,
+      "required": 4.5,
+      "fg": "#646477",
+      "bg": "#13131a",
+      "fontSize": 11
+     },
+     {
+      "selector": "tr > th.cm-col-airlock > span.cm-col-name",
+      "text": "Airlock",
+      "ratio": 4.01,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#1f1734",
+      "fontSize": 13.5
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "section.fold4 > div.fold4-inner > p.compare-legend",
+      "text": "✓ built in  ·  ~ possible with effort  ·  ✗ not re",
+      "ratio": 3.67,
+      "required": 4.5,
+      "fg": "#69697c",
+      "bg": "#0a0a12",
+      "fontSize": 12.5
+     },
+     {
+      "selector": "div.fold4-inner > p.compare-legend > span.cm-no",
+      "text": "✗",
+      "ratio": 1.91,
+      "required": 4.5,
+      "fg": "#404046",
+      "bg": "#0a0a12",
+      "fontSize": 13
+     },
+     {
+      "selector": "section.fold4 > a.scroll-indicator",
+      "text": "vs. other approaches ↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "section.fold4 > a.scroll-indicator > span.scroll-arrow",
+      "text": "↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.fold3-inner > div.fold3-header > span.fold3-label",
+      "text": "Why Airlock",
+      "ratio": 3.83,
+      "required": 4.5,
+      "fg": "#7f54e1",
+      "bg": "#130e24",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.compare-grid > div.compare-card > div.compare-card-subtitle",
+      "text": "lockfiles · flock · manual scripts",
+      "ratio": 2.5,
+      "required": 4.5,
+      "fg": "#57575d",
+      "bg": "#16161e",
+      "fontSize": 11
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Resource locking",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Shared state",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Persists across restarts",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Multi-agent safe",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Runs as daemon",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Works across tools",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.compare-grid > div.compare-card > div.compare-card-subtitle",
+      "text": "claude code skills · one session",
+      "ratio": 2.5,
+      "required": 4.5,
+      "fg": "#57575d",
+      "bg": "#16161e",
+      "fontSize": 11
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Resource locking",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Shared state",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Persists across restarts",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Multi-agent safe",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Runs as daemon",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--partial > span.compare-row-text > span.compare-row-cat",
+      "text": "Works across tools",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.compare-grid > div.compare-card.compare-card--featured > div.compare-card-subtitle",
+      "text": "airlock · shared daemon",
+      "ratio": 2.45,
+      "required": 4.5,
+      "fg": "#54515f",
+      "bg": "#120d22",
+      "fontSize": 11
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Resource locking",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Shared state",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Persists across restarts",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Multi-agent safe",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Runs as daemon",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Works across tools",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.compare-insight > p > code",
+      "text": "npm-install",
+      "ratio": 4.33,
+      "required": 4.5,
+      "fg": "#86868a",
+      "bg": "#22222a",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "section.fold3 > a.scroll-indicator",
+      "text": "See the 22 MCP tools ↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "section.fold3 > a.scroll-indicator > span.scroll-arrow",
+      "text": "↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.fold2-inner > div.fold2-header > span.fold2-label",
+      "text": "22 MCP Tools",
+      "ratio": 3.26,
+      "required": 4.5,
+      "fg": "#734ccc",
+      "bg": "#130e24",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Locks",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "lock_resource",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "unlock_resource",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "renew_lock",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "list_locks",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "lock_resources",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Notes & State",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "set_note",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "get_note",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "list_notes",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "delete_note",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "set_note_if",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "increment_counter",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Presence",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "register_agent",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "unregister_agent",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "list_agents",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Events",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "signal_event",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "wait_for_event",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "clear_event",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Tasks",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "push_task",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "claim_next_task",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "complete_task",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "fail_task",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "list_tasks",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > div.step-card-header > div.step-num",
+      "text": "1",
+      "ratio": 3.78,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#251c3d",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > p.step-desc > code",
+      "text": "go install github.com/adamorad/airlock/v2@latest",
+      "ratio": 4.22,
+      "required": 4.5,
+      "fg": "#88888c",
+      "bg": "#27272e",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > div.config-row > code",
+      "text": "brew install adamorad/tap/airlock",
+      "ratio": 4.4,
+      "required": 4.5,
+      "fg": "#848488",
+      "bg": "#1f1f26",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.config-row > button.copy-btn",
+      "text": "Copy",
+      "ratio": 4.02,
+      "required": 4.5,
+      "fg": "#8d8d90",
+      "bg": "#2f2f35",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.step-card-header > div.step-num",
+      "text": "2",
+      "ratio": 3.78,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#251c3d",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > div.config-row > code",
+      "text": "airlock install-service",
+      "ratio": 4.4,
+      "required": 4.5,
+      "fg": "#848488",
+      "bg": "#1f1f26",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.config-row > button.copy-btn",
+      "text": "Copy",
+      "ratio": 4.02,
+      "required": 4.5,
+      "fg": "#8d8d90",
+      "bg": "#2f2f35",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.step-card-header > div.step-num",
+      "text": "3",
+      "ratio": 3.78,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#251c3d",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > p.step-desc > code",
+      "text": "~/.airlock/token",
+      "ratio": 4.22,
+      "required": 4.5,
+      "fg": "#88888c",
+      "bg": "#27272e",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > div.config-row > code",
+      "text": "claude mcp add --transport http airlock http://loc",
+      "ratio": 4.4,
+      "required": 4.5,
+      "fg": "#848488",
+      "bg": "#1f1f26",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.config-row > button.copy-btn",
+      "text": "Copy",
+      "ratio": 4.02,
+      "required": 4.5,
+      "fg": "#8d8d90",
+      "bg": "#2f2f35",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.fold2-inner > div.roadmap-teaser > a",
+      "text": "see the changelog →",
+      "ratio": 4.41,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#121219",
+      "fontSize": 12.5
+     },
+     {
+      "selector": "section.fold2 > a.scroll-indicator",
+      "text": "← Back to top",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     }
+    ],
+    "contrastIndeterminate": 21,
+    "features": {
+     "gradientBackgrounds": 5,
+     "gradientText": 3,
+     "backdropFilters": 36,
+     "filterBlurs": 3,
+     "animated": 0
+    },
+    "overflow": {
+     "docScrollWidth": 390,
+     "viewportWidth": 390,
+     "horizontalScroll": false,
+     "elementsBeyondViewport": [
+      "div.bg-orbs > div.orb.orb-1",
+      "div.bg-orbs > div.orb.orb-2",
+      "div.bg-orbs > div.orb.orb-3"
+     ]
+    },
+    "clipped": [
+     {
+      "selector": "tr > th.cm-cap-head > span.visually-hidden",
+      "text": "Capability",
+      "reason": "own scrollWidth > clientWidth"
+     },
+     {
+      "selector": "tr > th.cm-cap-head > span.visually-hidden",
+      "text": "Capability",
+      "reason": "own scrollHeight > clientHeight"
+     },
+     {
+      "selector": "div.step-card > div.config-row > code",
+      "text": "brew install adamorad/tap/airlock",
+      "reason": "own scrollWidth > clientWidth"
+     },
+     {
+      "selector": "div.step-card > div.config-row > code",
+      "text": "claude mcp add --transport http airlock http://loc",
+      "reason": "own scrollWidth > clientWidth"
+     }
+    ],
+    "overlaps": [
+     {
+      "a": "div.step-card > div.config-row > code",
+      "b": "div.step-card > div.config-row > button.copy-btn",
+      "area": 405
+     }
+    ]
+   },
+   {
+    "route": "/",
+    "viewport": "1280",
+    "scheme": "dark",
+    "textElements": 182,
+    "fontSizes": {
+     "11px": 19,
+     "51.2px": 2,
+     "16px": 13,
+     "13.5px": 9,
+     "11.5px": 24,
+     "12px": 30,
+     "40px": 2,
+     "15px": 5,
+     "14px": 7,
+     "17px": 12,
+     "12.5px": 6,
+     "13px": 25,
+     "35.2px": 2,
+     "10px": 24,
+     "32px": 1,
+     "14.5px": 1
+    },
+    "fontWeights": {
+     "400": 105,
+     "500": 11,
+     "600": 39,
+     "700": 27
+    },
+    "textColors": {
+     "#997fe5": 1,
+     "#a1a1b9": 1,
+     "#ececec": 5,
+     "#78787d": 3,
+     "#997fe3": 1,
+     "#87878b": 1,
+     "#545459": 2,
+     "#6544b2": 4,
+     "#c2c2c4": 3,
+     "#22c55e": 1,
+     "#806bc0": 2,
+     "#919194": 2,
+     "#54545a": 3,
+     "#f87171": 1,
+     "#606065": 1,
+     "#4e4e54": 7,
+     "#714cc8": 1,
+     "#f0f0ff": 1,
+     "#8b5cf6": 6,
+     "#7c7c91": 1,
+     "#ececed": 3,
+     "#e8e8f8": 3,
+     "#646477": 3,
+     "#937add": 1,
+     "#b8b8c9": 6,
+     "#47474d": 12,
+     "#fbbf24": 6,
+     "#34d399": 8,
+     "#69697c": 1,
+     "#404046": 1,
+     "#7d7d81": 3,
+     "#7f54e1": 1,
+     "#ededed": 5,
+     "#57575d": 2,
+     "#5d5d62": 12,
+     "#d0d0d2": 12,
+     "#a78bfa": 1,
+     "#ececee": 1,
+     "#54515f": 1,
+     "#5a5665": 6,
+     "#d0cfd3": 6,
+     "#86868a": 1,
+     "#734ccc": 1,
+     "#8871cc": 1,
+     "#6b5aa0": 5,
+     "#8055e2": 22,
+     "#7f7f84": 3,
+     "#88888c": 2,
+     "#848488": 3,
+     "#8d8d90": 3
+    },
+    "radii": {
+     "50%": 3,
+     "pill/circle": 34,
+     "11px": 1,
+     "7px": 4,
+     "16px": 5,
+     "20px": 1,
+     "12px": 12,
+     "0px": 1,
+     "18px": 3,
+     "4px": 3,
+     "8px": 22,
+     "10px": 3
+    },
+    "shadows": {
+     "C 0px 24px 56px 0px, C 0px 1px 0px 0px inset": 2,
+     "C 0px 16px 48px 0px, C 0px 1px 0px 0px inset": 1,
+     "C 0px -4px 28px 0px": 1,
+     "C 0px 0px 8px 0px": 2,
+     "C 0px 12px 40px 0px, C 0px 1px 0px 0px inset": 2,
+     "C 0px 1px 0px 0px inset": 6,
+     "C 0px 0px 0px 2px inset": 18,
+     "C 0px 0px 40px 0px": 1
+    },
+    "contrastFailures": [
+     {
+      "selector": "div.fold1-inner > div.install-cmd-wrap > button.copy-btn",
+      "text": "Copy",
+      "ratio": 4.29,
+      "required": 4.5,
+      "fg": "#87878b",
+      "bg": "#24242b",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "section.fold1 > div.fold1-inner > p.compat-strip",
+      "text": "Works with Claude · Cursor · Copilot · Cline · Win",
+      "ratio": 3.13,
+      "required": 4.5,
+      "fg": "#606065",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "section.fold1 > a.scroll-indicator",
+      "text": "How does it compare? ↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "section.fold1 > a.scroll-indicator > span.scroll-arrow",
+      "text": "↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.fold4-inner > div.fold4-header > span.fold4-label",
+      "text": "The Landscape",
+      "ratio": 3.35,
+      "required": 4.5,
+      "fg": "#714cc8",
+      "bg": "#0a0a12",
+      "fontSize": 11
+     },
+     {
+      "selector": "tr > th > span.cm-col-sub",
+      "text": "Node · per-session",
+      "ratio": 3.22,
+      "required": 4.5,
+      "fg": "#646477",
+      "bg": "#13131a",
+      "fontSize": 11
+     },
+     {
+      "selector": "tr > th > span.cm-col-sub",
+      "text": "mem0 · graphs",
+      "ratio": 3.22,
+      "required": 4.5,
+      "fg": "#646477",
+      "bg": "#13131a",
+      "fontSize": 11
+     },
+     {
+      "selector": "tr > th > span.cm-col-sub",
+      "text": "Redis · lockfiles",
+      "ratio": 3.22,
+      "required": 4.5,
+      "fg": "#646477",
+      "bg": "#13131a",
+      "fontSize": 11
+     },
+     {
+      "selector": "tr > th.cm-col-airlock > span.cm-col-name",
+      "text": "Airlock",
+      "ratio": 4.01,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#1f1734",
+      "fontSize": 13.5
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "section.fold4 > div.fold4-inner > p.compare-legend",
+      "text": "✓ built in  ·  ~ possible with effort  ·  ✗ not re",
+      "ratio": 3.67,
+      "required": 4.5,
+      "fg": "#69697c",
+      "bg": "#0a0a12",
+      "fontSize": 12.5
+     },
+     {
+      "selector": "div.fold4-inner > p.compare-legend > span.cm-no",
+      "text": "✗",
+      "ratio": 1.91,
+      "required": 4.5,
+      "fg": "#404046",
+      "bg": "#0a0a12",
+      "fontSize": 13
+     },
+     {
+      "selector": "section.fold4 > a.scroll-indicator",
+      "text": "vs. other approaches ↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "section.fold4 > a.scroll-indicator > span.scroll-arrow",
+      "text": "↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.fold3-inner > div.fold3-header > span.fold3-label",
+      "text": "Why Airlock",
+      "ratio": 3.83,
+      "required": 4.5,
+      "fg": "#7f54e1",
+      "bg": "#130e24",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.compare-grid > div.compare-card > div.compare-card-subtitle",
+      "text": "lockfiles · flock · manual scripts",
+      "ratio": 2.5,
+      "required": 4.5,
+      "fg": "#57575d",
+      "bg": "#16161e",
+      "fontSize": 11
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Resource locking",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Shared state",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Persists across restarts",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Multi-agent safe",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Runs as daemon",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Works across tools",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.compare-grid > div.compare-card > div.compare-card-subtitle",
+      "text": "claude code skills · one session",
+      "ratio": 2.5,
+      "required": 4.5,
+      "fg": "#57575d",
+      "bg": "#16161e",
+      "fontSize": 11
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Resource locking",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Shared state",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Persists across restarts",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Multi-agent safe",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Runs as daemon",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--partial > span.compare-row-text > span.compare-row-cat",
+      "text": "Works across tools",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.compare-grid > div.compare-card.compare-card--featured > div.compare-card-subtitle",
+      "text": "airlock · shared daemon",
+      "ratio": 2.45,
+      "required": 4.5,
+      "fg": "#54515f",
+      "bg": "#120d22",
+      "fontSize": 11
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Resource locking",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Shared state",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Persists across restarts",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Multi-agent safe",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Runs as daemon",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Works across tools",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.compare-insight > p > code",
+      "text": "npm-install",
+      "ratio": 4.33,
+      "required": 4.5,
+      "fg": "#86868a",
+      "bg": "#22222a",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "section.fold3 > a.scroll-indicator",
+      "text": "See the 22 MCP tools ↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "section.fold3 > a.scroll-indicator > span.scroll-arrow",
+      "text": "↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.fold2-inner > div.fold2-header > span.fold2-label",
+      "text": "22 MCP Tools",
+      "ratio": 3.26,
+      "required": 4.5,
+      "fg": "#734ccc",
+      "bg": "#130e24",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Locks",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "lock_resource",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "unlock_resource",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "renew_lock",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "list_locks",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "lock_resources",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Notes & State",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "set_note",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "get_note",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "list_notes",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "delete_note",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "set_note_if",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "increment_counter",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Presence",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "register_agent",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "unregister_agent",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "list_agents",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Events",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "signal_event",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "wait_for_event",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "clear_event",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Tasks",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "push_task",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "claim_next_task",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "complete_task",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "fail_task",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "list_tasks",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.step-card > div.step-card-header > div.step-num",
+      "text": "1",
+      "ratio": 3.78,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#251c3d",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > p.step-desc > code",
+      "text": "go install github.com/adamorad/airlock/v2@latest",
+      "ratio": 4.22,
+      "required": 4.5,
+      "fg": "#88888c",
+      "bg": "#27272e",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > div.config-row > code",
+      "text": "brew install adamorad/tap/airlock",
+      "ratio": 4.4,
+      "required": 4.5,
+      "fg": "#848488",
+      "bg": "#1f1f26",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.config-row > button.copy-btn",
+      "text": "Copy",
+      "ratio": 4.02,
+      "required": 4.5,
+      "fg": "#8d8d90",
+      "bg": "#2f2f35",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.step-card-header > div.step-num",
+      "text": "2",
+      "ratio": 3.78,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#251c3d",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > div.config-row > code",
+      "text": "airlock install-service",
+      "ratio": 4.4,
+      "required": 4.5,
+      "fg": "#848488",
+      "bg": "#1f1f26",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.config-row > button.copy-btn",
+      "text": "Copy",
+      "ratio": 4.02,
+      "required": 4.5,
+      "fg": "#8d8d90",
+      "bg": "#2f2f35",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.step-card-header > div.step-num",
+      "text": "3",
+      "ratio": 3.78,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#251c3d",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > p.step-desc > code",
+      "text": "~/.airlock/token",
+      "ratio": 4.22,
+      "required": 4.5,
+      "fg": "#88888c",
+      "bg": "#27272e",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > div.config-row > code",
+      "text": "claude mcp add --transport http airlock http://loc",
+      "ratio": 4.4,
+      "required": 4.5,
+      "fg": "#848488",
+      "bg": "#1f1f26",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.config-row > button.copy-btn",
+      "text": "Copy",
+      "ratio": 4.02,
+      "required": 4.5,
+      "fg": "#8d8d90",
+      "bg": "#2f2f35",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.fold2-inner > div.roadmap-teaser > a",
+      "text": "see the changelog →",
+      "ratio": 4.41,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#121219",
+      "fontSize": 12.5
+     },
+     {
+      "selector": "section.fold2 > a.scroll-indicator",
+      "text": "← Back to top",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     }
+    ],
+    "contrastIndeterminate": 21,
+    "features": {
+     "gradientBackgrounds": 5,
+     "gradientText": 3,
+     "backdropFilters": 36,
+     "filterBlurs": 3,
+     "animated": 0
+    },
+    "overflow": {
+     "docScrollWidth": 1280,
+     "viewportWidth": 1280,
+     "horizontalScroll": false,
+     "elementsBeyondViewport": [
+      "div.bg-orbs > div.orb.orb-2"
+     ]
+    },
+    "clipped": [
+     {
+      "selector": "tr > th.cm-cap-head > span.visually-hidden",
+      "text": "Capability",
+      "reason": "own scrollWidth > clientWidth"
+     },
+     {
+      "selector": "tr > th.cm-cap-head > span.visually-hidden",
+      "text": "Capability",
+      "reason": "own scrollHeight > clientHeight"
+     },
+     {
+      "selector": "div.step-card > div.config-row > code",
+      "text": "claude mcp add --transport http airlock http://loc",
+      "reason": "own scrollWidth > clientWidth"
+     }
+    ],
+    "overlaps": [
+     {
+      "a": "div.step-card > div.config-row > code",
+      "b": "div.step-card > div.config-row > button.copy-btn",
+      "area": 405
+     }
+    ]
+   },
+   {
+    "route": "/",
+    "viewport": "390",
+    "scheme": "dark",
+    "textElements": 181,
+    "fontSizes": {
+     "11px": 41,
+     "25.35px": 2,
+     "13.12px": 1,
+     "13.5px": 11,
+     "11.5px": 24,
+     "10.5px": 1,
+     "12px": 7,
+     "20.8px": 4,
+     "15px": 4,
+     "13px": 32,
+     "16px": 12,
+     "17px": 12,
+     "12.5px": 6,
+     "10px": 23,
+     "19.2px": 1
+    },
+    "fontWeights": {
+     "400": 105,
+     "500": 11,
+     "600": 38,
+     "700": 27
+    },
+    "textColors": {
+     "#997fe5": 1,
+     "#a1a1b9": 1,
+     "#ececec": 5,
+     "#78787d": 3,
+     "#997fe3": 1,
+     "#87878b": 1,
+     "#545459": 2,
+     "#6544b2": 4,
+     "#c2c2c4": 3,
+     "#22c55e": 1,
+     "#806bc0": 2,
+     "#919194": 2,
+     "#54545a": 3,
+     "#f87171": 1,
+     "#606065": 1,
+     "#4e4e54": 7,
+     "#714cc8": 1,
+     "#f0f0ff": 1,
+     "#8b5cf6": 6,
+     "#7c7c91": 1,
+     "#ececed": 3,
+     "#e8e8f8": 3,
+     "#646477": 3,
+     "#937add": 1,
+     "#b8b8c9": 6,
+     "#47474d": 12,
+     "#fbbf24": 6,
+     "#34d399": 8,
+     "#69697c": 1,
+     "#404046": 1,
+     "#7d7d81": 3,
+     "#7f54e1": 1,
+     "#ededed": 5,
+     "#57575d": 2,
+     "#5d5d62": 12,
+     "#d0d0d2": 12,
+     "#ececee": 1,
+     "#54515f": 1,
+     "#5a5665": 6,
+     "#d0cfd3": 6,
+     "#86868a": 1,
+     "#734ccc": 1,
+     "#8871cc": 1,
+     "#6b5aa0": 5,
+     "#8055e2": 22,
+     "#7f7f84": 3,
+     "#88888c": 2,
+     "#848488": 3,
+     "#8d8d90": 3
+    },
+    "radii": {
+     "50%": 3,
+     "pill/circle": 33,
+     "11px": 1,
+     "7px": 4,
+     "16px": 5,
+     "20px": 1,
+     "12px": 12,
+     "0px": 1,
+     "18px": 3,
+     "4px": 3,
+     "8px": 22,
+     "10px": 3
+    },
+    "shadows": {
+     "C 0px 24px 56px 0px, C 0px 1px 0px 0px inset": 2,
+     "C 0px 16px 48px 0px, C 0px 1px 0px 0px inset": 1,
+     "C 0px -4px 28px 0px": 1,
+     "C 0px 0px 8px 0px": 2,
+     "C 0px 12px 40px 0px, C 0px 1px 0px 0px inset": 2,
+     "C 0px 1px 0px 0px inset": 6,
+     "C 0px 0px 0px 2px inset": 18,
+     "C 0px 0px 40px 0px": 1
+    },
+    "contrastFailures": [
+     {
+      "selector": "div.fold1-inner > div.install-cmd-wrap > button.copy-btn",
+      "text": "Copy",
+      "ratio": 4.29,
+      "required": 4.5,
+      "fg": "#87878b",
+      "bg": "#24242b",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "section.fold1 > div.fold1-inner > p.compat-strip",
+      "text": "Works with Claude · Cursor · Copilot · Cline · Win",
+      "ratio": 3.13,
+      "required": 4.5,
+      "fg": "#606065",
+      "bg": "#0a0a12",
+      "fontSize": 10.5
+     },
+     {
+      "selector": "section.fold1 > a.scroll-indicator",
+      "text": "How does it compare? ↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "section.fold1 > a.scroll-indicator > span.scroll-arrow",
+      "text": "↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.fold4-inner > div.fold4-header > span.fold4-label",
+      "text": "The Landscape",
+      "ratio": 3.35,
+      "required": 4.5,
+      "fg": "#714cc8",
+      "bg": "#0a0a12",
+      "fontSize": 11
+     },
+     {
+      "selector": "tr > th > span.cm-col-sub",
+      "text": "Node · per-session",
+      "ratio": 3.22,
+      "required": 4.5,
+      "fg": "#646477",
+      "bg": "#13131a",
+      "fontSize": 11
+     },
+     {
+      "selector": "tr > th > span.cm-col-sub",
+      "text": "mem0 · graphs",
+      "ratio": 3.22,
+      "required": 4.5,
+      "fg": "#646477",
+      "bg": "#13131a",
+      "fontSize": 11
+     },
+     {
+      "selector": "tr > th > span.cm-col-sub",
+      "text": "Redis · lockfiles",
+      "ratio": 3.22,
+      "required": 4.5,
+      "fg": "#646477",
+      "bg": "#13131a",
+      "fontSize": 11
+     },
+     {
+      "selector": "tr > th.cm-col-airlock > span.cm-col-name",
+      "text": "Airlock",
+      "ratio": 4.01,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#1f1734",
+      "fontSize": 13.5
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "tbody > tr > td.cm-no",
+      "text": "✗",
+      "ratio": 2,
+      "required": 4.5,
+      "fg": "#47474d",
+      "bg": "#13131a",
+      "fontSize": 16
+     },
+     {
+      "selector": "section.fold4 > div.fold4-inner > p.compare-legend",
+      "text": "✓ built in  ·  ~ possible with effort  ·  ✗ not re",
+      "ratio": 3.67,
+      "required": 4.5,
+      "fg": "#69697c",
+      "bg": "#0a0a12",
+      "fontSize": 12.5
+     },
+     {
+      "selector": "div.fold4-inner > p.compare-legend > span.cm-no",
+      "text": "✗",
+      "ratio": 1.91,
+      "required": 4.5,
+      "fg": "#404046",
+      "bg": "#0a0a12",
+      "fontSize": 13
+     },
+     {
+      "selector": "section.fold4 > a.scroll-indicator",
+      "text": "vs. other approaches ↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "section.fold4 > a.scroll-indicator > span.scroll-arrow",
+      "text": "↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.fold3-inner > div.fold3-header > span.fold3-label",
+      "text": "Why Airlock",
+      "ratio": 3.83,
+      "required": 4.5,
+      "fg": "#7f54e1",
+      "bg": "#130e24",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.compare-grid > div.compare-card > div.compare-card-subtitle",
+      "text": "lockfiles · flock · manual scripts",
+      "ratio": 2.5,
+      "required": 4.5,
+      "fg": "#57575d",
+      "bg": "#16161e",
+      "fontSize": 11
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Resource locking",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Shared state",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Persists across restarts",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Multi-agent safe",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Runs as daemon",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Works across tools",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.compare-grid > div.compare-card > div.compare-card-subtitle",
+      "text": "claude code skills · one session",
+      "ratio": 2.5,
+      "required": 4.5,
+      "fg": "#57575d",
+      "bg": "#16161e",
+      "fontSize": 11
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Resource locking",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Shared state",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Persists across restarts",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Multi-agent safe",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--no > span.compare-row-text > span.compare-row-cat",
+      "text": "Runs as daemon",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--partial > span.compare-row-text > span.compare-row-cat",
+      "text": "Works across tools",
+      "ratio": 2.72,
+      "required": 4.5,
+      "fg": "#5d5d62",
+      "bg": "#16161e",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.compare-grid > div.compare-card.compare-card--featured > div.compare-card-subtitle",
+      "text": "airlock · shared daemon",
+      "ratio": 2.45,
+      "required": 4.5,
+      "fg": "#54515f",
+      "bg": "#120d22",
+      "fontSize": 11
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Resource locking",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Shared state",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Persists across restarts",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Multi-agent safe",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Runs as daemon",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "li.compare-row.compare-row--yes > span.compare-row-text > span.compare-row-cat",
+      "text": "Works across tools",
+      "ratio": 2.67,
+      "required": 4.5,
+      "fg": "#5a5665",
+      "bg": "#120d22",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.compare-insight > p > code",
+      "text": "npm-install",
+      "ratio": 4.33,
+      "required": 4.5,
+      "fg": "#86868a",
+      "bg": "#22222a",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "section.fold3 > a.scroll-indicator",
+      "text": "See the 22 MCP tools ↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "section.fold3 > a.scroll-indicator > span.scroll-arrow",
+      "text": "↓",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     },
+     {
+      "selector": "div.fold2-inner > div.fold2-header > span.fold2-label",
+      "text": "22 MCP Tools",
+      "ratio": 3.26,
+      "required": 4.5,
+      "fg": "#734ccc",
+      "bg": "#130e24",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Locks",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "lock_resource",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "unlock_resource",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "renew_lock",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "list_locks",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "lock_resources",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Notes & State",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "set_note",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "get_note",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "list_notes",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "delete_note",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "set_note_if",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "increment_counter",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Presence",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "register_agent",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "unregister_agent",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "list_agents",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Events",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "signal_event",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "wait_for_event",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "clear_event",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-groups > div.tool-group > span.tool-group-label",
+      "text": "Tasks",
+      "ratio": 3.2,
+      "required": 4.5,
+      "fg": "#6b5aa0",
+      "bg": "#121219",
+      "fontSize": 10
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "push_task",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "claim_next_task",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "complete_task",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "fail_task",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.tool-group > div.tool-pills > span.tool-pill",
+      "text": "list_tasks",
+      "ratio": 3.63,
+      "required": 4.5,
+      "fg": "#8055e2",
+      "bg": "#1b152c",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > div.step-card-header > div.step-num",
+      "text": "1",
+      "ratio": 3.78,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#251c3d",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > p.step-desc > code",
+      "text": "go install github.com/adamorad/airlock/v2@latest",
+      "ratio": 4.22,
+      "required": 4.5,
+      "fg": "#88888c",
+      "bg": "#27272e",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > div.config-row > code",
+      "text": "brew install adamorad/tap/airlock",
+      "ratio": 4.4,
+      "required": 4.5,
+      "fg": "#848488",
+      "bg": "#1f1f26",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.config-row > button.copy-btn",
+      "text": "Copy",
+      "ratio": 4.02,
+      "required": 4.5,
+      "fg": "#8d8d90",
+      "bg": "#2f2f35",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.step-card-header > div.step-num",
+      "text": "2",
+      "ratio": 3.78,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#251c3d",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > div.config-row > code",
+      "text": "airlock install-service",
+      "ratio": 4.4,
+      "required": 4.5,
+      "fg": "#848488",
+      "bg": "#1f1f26",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.config-row > button.copy-btn",
+      "text": "Copy",
+      "ratio": 4.02,
+      "required": 4.5,
+      "fg": "#8d8d90",
+      "bg": "#2f2f35",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.step-card-header > div.step-num",
+      "text": "3",
+      "ratio": 3.78,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#251c3d",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > p.step-desc > code",
+      "text": "~/.airlock/token",
+      "ratio": 4.22,
+      "required": 4.5,
+      "fg": "#88888c",
+      "bg": "#27272e",
+      "fontSize": 11
+     },
+     {
+      "selector": "div.step-card > div.config-row > code",
+      "text": "claude mcp add --transport http airlock http://loc",
+      "ratio": 4.4,
+      "required": 4.5,
+      "fg": "#848488",
+      "bg": "#1f1f26",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.step-card > div.config-row > button.copy-btn",
+      "text": "Copy",
+      "ratio": 4.02,
+      "required": 4.5,
+      "fg": "#8d8d90",
+      "bg": "#2f2f35",
+      "fontSize": 11.5
+     },
+     {
+      "selector": "div.fold2-inner > div.roadmap-teaser > a",
+      "text": "see the changelog →",
+      "ratio": 4.41,
+      "required": 4.5,
+      "fg": "#8b5cf6",
+      "bg": "#121219",
+      "fontSize": 12.5
+     },
+     {
+      "selector": "section.fold2 > a.scroll-indicator",
+      "text": "← Back to top",
+      "ratio": 2.39,
+      "required": 4.5,
+      "fg": "#4e4e54",
+      "bg": "#0a0a12",
+      "fontSize": 12
+     }
+    ],
+    "contrastIndeterminate": 21,
+    "features": {
+     "gradientBackgrounds": 5,
+     "gradientText": 3,
+     "backdropFilters": 36,
+     "filterBlurs": 3,
+     "animated": 0
+    },
+    "overflow": {
+     "docScrollWidth": 390,
+     "viewportWidth": 390,
+     "horizontalScroll": false,
+     "elementsBeyondViewport": [
+      "div.bg-orbs > div.orb.orb-1",
+      "div.bg-orbs > div.orb.orb-2",
+      "div.bg-orbs > div.orb.orb-3"
+     ]
+    },
+    "clipped": [
+     {
+      "selector": "tr > th.cm-cap-head > span.visually-hidden",
+      "text": "Capability",
+      "reason": "own scrollWidth > clientWidth"
+     },
+     {
+      "selector": "tr > th.cm-cap-head > span.visually-hidden",
+      "text": "Capability",
+      "reason": "own scrollHeight > clientHeight"
+     },
+     {
+      "selector": "div.step-card > div.config-row > code",
+      "text": "brew install adamorad/tap/airlock",
+      "reason": "own scrollWidth > clientWidth"
+     },
+     {
+      "selector": "div.step-card > div.config-row > code",
+      "text": "claude mcp add --transport http airlock http://loc",
+      "reason": "own scrollWidth > clientWidth"
+     }
+    ],
+    "overlaps": [
+     {
+      "a": "div.step-card > div.config-row > code",
+      "b": "div.step-card > div.config-row > button.copy-btn",
+      "area": 405
+     }
+    ]
+   }
+  ]
+ },
+ "static": {
+  "css": {
+   "file": "../airlock-web/src/style.css",
+   "lines": 1045,
+   "rules": 184,
+   "customProperties": [
+    "--violet",
+    "--violet-bright",
+    "--green",
+    "--text",
+    "--text-secondary",
+    "--text-tertiary",
+    "--surface",
+    "--surface-border"
+   ],
+   "colorLiteralsOutsideRoot": {
+    "#0a0a12": 1,
+    "#7C3AED": 1,
+    "#a855f7": 1,
+    "#6d28d9": 1,
+    "rgba(124,58,237,0.12)": 3,
+    "rgba(124,58,237,0.35)": 1,
+    "rgba(167,139,250,0.9)": 2,
+    "rgba(255,255,255,0.05)": 4,
+    "rgba(255,255,255,0.14)": 1,
+    "rgba(200,200,230,0.78)": 1,
+    "rgba(124,58,237,0.45)": 1,
+    "#fff": 1,
+    "rgba(255,255,255,0.72)": 1,
+    "#a78bfa": 2,
+    "#8B5CF6": 2,
+    "#c084fc": 3,
+    "rgba(255,255,255,0.04)": 2,
+    "rgba(30,24,52,0.55)": 1,
+    "rgba(14,10,26,0.60)": 1,
+    "rgba(255,255,255,0.12)": 5,
+    "rgba(0,0,0,0.45)": 1,
+    "rgba(255,255,255,0.10)": 2,
+    "rgba(255,255,255,0.03)": 5,
+    "rgba(255,255,255,0.07)": 7,
+    "#ff5f57": 1,
+    "#febc2e": 1,
+    "#28c840": 1,
+    "rgba(139,92,246,0.7)": 1,
+    "rgba(255,255,255,0.75)": 1,
+    "#22c55e": 1,
+    "#f87171": 1,
+    "rgba(255,255,255,0.3)": 2,
+    "rgba(167,139,250,0.75)": 1,
+    "rgba(255,255,255,0.55)": 1,
+    "rgba(255,255,255,0.35)": 1,
+    "rgba(255,255,255,0.1)": 1,
+    "rgba(255,255,255,0.11)": 2,
+    "rgba(34,197,94,0.3)": 1,
+    "rgba(139,92,246,0.8)": 1,
+    "rgba(124,58,237,0.08)": 2,
+    "rgba(124,58,237,0.22)": 3,
+    "rgba(167,139,250,0.6)": 1,
+    "rgba(139,92,246,0.9)": 2,
+    "rgba(124,58,237,0.09)": 1,
+    "rgba(124,58,237,0.15)": 3,
+    "rgba(124,58,237,0.32)": 2,
+    "rgba(255,255,255,0.035)": 2,
+    "rgba(0,0,0,0.28)": 2,
+    "rgba(255,255,255,0.08)": 2,
+    "rgba(124,58,237,0.07)": 1,
+    "rgba(124,58,237,0.30)": 1,
+    "rgba(124,58,237,0.10)": 2,
+    "rgba(167,139,250,1)": 1,
+    "rgba(255,255,255,0.06)": 2,
+    "rgba(255,255,255,0.62)": 1,
+    "rgba(99,140,255,0.13)": 1,
+    "#9fbcff": 1,
+    "rgba(99,140,255,0.28)": 1,
+    "rgba(139,92,246,0.18)": 1,
+    "rgba(139,92,246,0.38)": 1,
+    "rgba(34,197,94,0.18)": 1,
+    "rgba(74,222,128,0.6)": 1,
+    "rgba(239,68,68,0.12)": 1,
+    "rgba(248,113,113,0.4)": 1,
+    "rgba(234,179,8,0.12)": 1,
+    "rgba(250,204,21,0.4)": 1,
+    "rgba(255,255,255,0.8)": 1,
+    "rgba(139,92,246,0.6)": 1,
+    "#f0f0ff": 1,
+    "rgba(200,200,230,0.6)": 1,
+    "rgba(139,92,246,0.40)": 1,
+    "#e8e8f8": 2,
+    "rgba(200,200,230,0.5)": 2,
+    "rgba(139,92,246,0.15)": 1,
+    "rgba(139,92,246,0.3)": 1,
+    "rgba(200,200,230,0.55)": 1,
+    "rgba(167,243,208,0.85)": 1,
+    "#34d399": 2,
+    "rgba(200,200,230,0.35)": 1,
+    "rgba(255,255,255,0.15)": 1,
+    "rgba(251,191,36,0.7)": 1,
+    "#fbbf24": 2,
+    "rgba(200,200,230,0.45)": 1,
+    "rgba(220,220,240,0.82)": 1,
+    "rgba(255,255,255,0.22)": 1,
+    "rgba(139,92,246,0.35)": 4,
+    "rgba(124,58,237,0.16)": 1,
+    "rgba(167,139,250,0.85)": 1
+   },
+   "colorLiteralsInRoot": 8,
+   "fontSizes": {
+    "12px": 4,
+    "11px": 11,
+    "clamp(2rem, 5vw, 3.2rem)": 1,
+    "1rem": 1,
+    "13.5px": 5,
+    "11.5px": 4,
+    "clamp(1.6rem, 3.5vw, 2rem)": 1,
+    "14.5px": 1,
+    "10px": 4,
+    "13px": 5,
+    "12.5px": 4,
+    "clamp(1.5rem, 3.5vw, 2.2rem)": 1,
+    "15px": 3,
+    "clamp(1.5rem, 6.5vw, 2rem)": 1,
+    "clamp(0.82rem, 3.2vw, 0.95rem)": 1,
+    "10.5px": 1,
+    "1.2rem": 1,
+    "1.3rem": 2,
+    "clamp(1.6rem, 4vw, 2.5rem)": 1,
+    "14px": 1,
+    "17px": 2,
+    "16px": 1
+   },
+   "fontWeights": {
+    "400": 1,
+    "500": 4,
+    "600": 13,
+    "700": 7
+   },
+   "fontFamilies": {
+    "'Inter'": 1,
+    "'JetBrains Mono'": 13,
+    "-apple-system": 1,
+    "inherit": 1
+   },
+   "radii": {
+    "50%": 6,
+    "100px": 5,
+    "11px": 1,
+    "16px": 2,
+    "7px": 1,
+    "12px": 4,
+    "8px": 1,
+    "10px": 1,
+    "4px": 2,
+    "18px": 1,
+    "14px": 2,
+    "20px": 2
+   },
+   "boxShadows": {
+    "0 24px 56px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.10)": 1,
+    "inset 0 1px 0 rgba(255,255,255,0.07)": 1,
+    "0 12px 40px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08)": 1,
+    "0 0 40px rgba(124,58,237,0.10)": 1,
+    "inset 0 1px 0 rgba(255,255,255,0.12)": 1,
+    "inset 0 0 0 2px rgba(74,222,128,0.6)": 1,
+    "inset 0 0 0 2px rgba(248,113,113,0.4)": 1,
+    "inset 0 0 0 2px rgba(250,204,21,0.4)": 1,
+    "0 0 8px rgba(139,92,246,0.6)": 1,
+    "0 0 28px rgba(124,58,237,0.15)": 1,
+    "0 16px 48px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.07)": 1,
+    "0 -4px 28px rgba(124,58,237,0.16)": 1
+   },
+   "gradients": 5,
+   "gradientText": 6,
+   "backdropFilters": {
+    "blur(12px) saturate(140%)": 2,
+    "blur(26px) saturate(150%)": 1,
+    "blur(10px)": 2,
+    "blur(20px) saturate(140%)": 1,
+    "blur(22px) saturate(140%)": 2
+   },
+   "filters": {
+    "blur(80px)": 1,
+    "brightness(1.1)": 1
+   },
+   "animations": [
+    ".orb-1",
+    ".orb-2",
+    ".orb-3",
+    ".scroll-arrow",
+    ".orb, .scroll-arrow"
+   ],
+   "keyframes": 4,
+   "important": 0,
+   "textTransform": 10,
+   "letterSpacing": {
+    "0.09em": 2,
+    "-0.04em": 1,
+    "0.12em": 3,
+    "-0.03em": 1,
+    "0.04em": 1,
+    "0.14em": 1,
+    "-0.02em": 1,
+    "0.08em": 2,
+    "0.06em": 1
+   },
+   "opacityDecls": {
+    "0.18": 1,
+    "0.8": 1
+   },
+   "tokenUse": {
+    "varRefs": 37,
+    "literalColorDecls": 126
+   },
+   "surfaceSignatures": {
+    "rgba(124,58,237,0.12) | 1px solid rgba(124,58,237,0.35) | 100px | blur": [
+     ".hero-badge"
+    ],
+    "rgba(255,255,255,0.05) | 1px solid rgba(255,255,255,0.14) | 100px | blur": [
+     ".hero-gh"
+    ],
+    "rgba(255,255,255,0.04) | 1px solid var(--surface-border) | 11px | flat": [
+     ".install-cmd-wrap"
+    ],
+    "linear-gradient(160deg, rgba(30,24,52,0.55) 0%, rgba(14,10,26,0.60) 100%) | 1px solid rgba(255,255,255,0.12) | 16px | blur": [
+     ".terminal-card"
+    ],
+    "rgba(255,255,255,0.07) | 1px solid rgba(255,255,255,0.1) | 7px | flat": [
+     ".copy-btn"
+    ],
+    "rgba(255,255,255,0.03) | 1px solid var(--surface-border) | 12px | flat": [
+     ".tool-group"
+    ],
+    "rgba(124,58,237,0.09) | 1px solid rgba(124,58,237,0.22) | 8px | blur": [
+     ".tool-pill"
+    ],
+    "rgba(255,255,255,0.05) | 1px solid rgba(255,255,255,0.11) | 16px | blur": [
+     ".step-card"
+    ],
+    "rgba(255,255,255,0.035) | 1px solid var(--surface-border) | 10px | flat": [
+     ".config-row"
+    ],
+    "rgba(255,255,255,0.05) | 1px solid rgba(255,255,255,0.12) | 18px | blur": [
+     ".compare-card"
+    ],
+    " | 1px solid rgba(255,255,255,0.12) | 12px | blur": [
+     ".compare-card-icon"
+    ],
+    "rgba(255,255,255,0.03) | 1px solid rgba(255,255,255,0.07) | 12px | flat": [
+     ".compare-insight",
+     ".roadmap-teaser"
+    ],
+    "rgba(255,255,255,0.03) | 1px solid rgba(255,255,255,0.08) | 14px | flat": [
+     ".gh-card"
+    ],
+    "rgba(255,255,255,0.035) | 1px solid rgba(255,255,255,0.10) | 20px | blur": [
+     ".compare-matrix-wrap"
+    ]
+   },
+   "mediaQueries": [
+    "(max-width: 640px)",
+    "(max-width: 900px)",
+    "(max-width: 560px)",
+    "(max-width: 600px)",
+    "(prefers-reduced-motion: reduce)"
+   ],
+   "distinct": {
+    "fontSizes": 22,
+    "fontWeights": 4,
+    "radii": 12,
+    "boxShadows": 12,
+    "colorLiteralsOutsideRoot": 88,
+    "totalColorLiteralUses": 135,
+    "surfaceSignatures": 14
+   }
+  },
+  "html": {
+   "file": "../airlock-web/index.html",
+   "inlineStyles": 4,
+   "inlineStyleSamples": [
+    "font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(167,139,250,0.8",
+    "font-family:'JetBrains Mono',monospace;font-size:11px;background:rgba(255,255,25",
+    "font-family:'JetBrains Mono',monospace;font-size:11px;background:rgba(255,255,25",
+    "margin-top:8px"
+   ],
+   "htmlClasses": 104,
+   "unusedCssClasses": [
+    "sr-only",
+    "gh-compare-grid",
+    "gh-card",
+    "gh-card--featured",
+    "gh-card-header",
+    "gh-card-name",
+    "gh-card-stars",
+    "gh-card-new",
+    "gh-card-desc",
+    "gh-rows",
+    "gh-row",
+    "gh-dot",
+    "gh-row--yes",
+    "gh-row--no",
+    "gh-row--partial"
+   ],
+   "classesWithoutCss": [
+    "cm-cap-head"
+   ],
+   "inlineSvgs": 4,
+   "symbolsInCopy": 34,
+   "numberedFoldClasses": 22
+  }
+ }
+}

@@ -1,6 +1,6 @@
 ---
 name: design-law
-description: "Builds an agent-first design system for an existing web codebase and tests whether it works. Derives a single DESIGN.md of numbered, dated, absolute rules (with the reasoning and measured counts inline) from what the UI already does, creates a closed vocabulary (tokens plus wrapper components) so product code can only use approved values, writes recipes for recurring page shapes, adds a checker whose every finding cites a DESIGN.md section, and runs an A/B test (agent without the system vs agent with it) to measure the effect. Use when asked to create a design system for AI agents, stop agents producing generic or inconsistent UI, write a DESIGN.md, enforce UI consistency with a linter, or measure whether design rules change agent output. Targets React or TSX with Tailwind for the static checker; the render audit works on any site."
+description: "Builds an agent-first design system for an existing web codebase and tests whether it works. Derives a single DESIGN.md of numbered, dated, absolute rules (with the reasoning and measured counts inline) from what the UI already does, creates a closed vocabulary (tokens plus wrapper components) so product code can only use approved values, writes recipes for recurring page shapes, adds a checker whose every finding cites a DESIGN.md section, and runs an A/B test (agent without the system vs agent with it) to measure the effect. Use when asked to create a design system for AI agents, stop agents producing generic or inconsistent UI, write a DESIGN.md, enforce UI consistency with a linter, or measure whether design rules change agent output. Two static checkers ship: React or TSX with Tailwind, and HTML with plain CSS; the render audit works on any site."
 allowed-tools: Read Grep Glob Bash Edit Write Agent
 ---
 
@@ -45,13 +45,13 @@ Identify framework and version, router, styling system (Tailwind, CSS modules, o
 4. Keep an "Open items" section for things the owner has not decided. Open items are not enforced.
 
 ### Phase 3: Vocabulary
-Put tokens in one place (CSS variables or the Tailwind theme, whichever the repo uses). Replace every opacity-faded or literal value the law bans with a named token that renders the same. Create wrapper components for heading, text, button/link, card, tag, section (and any one-off the site genuinely needs, such as a device frame), exposing only approved variants. Put them under one folder (`src/components/ds/`). See `references/wrappers.md`. Do not migrate existing pages. Typecheck, build, commit.
+Put tokens in one place (CSS variables or the Tailwind theme, whichever the repo uses). Replace every opacity-faded or literal value the law bans with a named token that renders the same. Create wrapper components for heading, text, button/link, card, tag, section (and any one-off the site genuinely needs, such as a device frame), exposing only approved variants. Put them under one folder (`src/components/ds/`). With no component framework the vocabulary is a stylesheet (`ds.css`) of `ds-*` token variables and component classes, and pages may use only those classes. See `references/wrappers.md`. Do not migrate existing pages. Typecheck, build, commit.
 
 ### Phase 4: Recipes
 Identify recurring shapes (hero, featured item, card grid, list, contact). For each write `design-system/recipes/<name>.md` from `references/recipe.template.md`: when to use, when not to, anatomy, rules obeyed, file to copy, and a **What to surface** step grounded in this site's real content. Each recipe has a real, typechecked example in `recipes/examples/` built only from the wrappers. Existing pages are not copy sources if they contradict the law.
 
 ### Phase 5: Checker
-`design-system/check-ui/` is already copied. Adapt it:
+`design-system/check-ui/` (React/Tailwind) and `design-system/check-ui-css/` (HTML + plain CSS, `DS_CSS=path/to/ds.css`) are already copied; use the one that matches the project and delete the other. Adapt it:
 - Edit `check-ui/rules.ts` so every rule matches a rule in this project's DESIGN.md and cites its section. Keep 15 to 25 static rules, each with `fix`.
 - Keep the rule that product code outside the vocabulary folder may not use type, colour, radius, border, shadow or opacity utilities.
 - Update `fixtures/dont.tsx` to typical agent output for this project (gradient hero, shadows, muted grey data, emoji, arbitrary sizes); tag every bad line with `{/* bad */}`.
@@ -68,7 +68,7 @@ Pick a small task that adds a new page or component using only content already o
 - Look at the screenshots yourself. The checkers cannot see poor layout, redundant content, unreadable images or new copy that breaks the brief.
 
 ### Phase 7: Report
-Write `design-system/EXPERIMENT.md`: metrics table (existing pages, A, B), screenshots, what B's first check caught (say "nothing" if so), what the checkers missed that eyes caught, anything A did better, problems the run exposed in the system, honest limits (runs per arm, same model, you wrote the rules, A contamination, task size, B knew it was checked), and the top 5 fixes for the existing site from the baseline, not applied. See `examples/` in the repo this skill ships from for a complete run.
+Write `design-system/EXPERIMENT.md`: metrics table (existing pages, A, B), screenshots, what B's first check caught (say "nothing" if so), what the checkers missed that eyes caught, anything A did better, problems the run exposed in the system, honest limits (runs per arm, same model, you wrote the rules, A contamination, task size, B knew it was checked), and the top 5 fixes for the existing site from the baseline, not applied. See `examples/airlock` in the repo this skill ships from for a complete run.
 
 ## Rule-writing standards
 

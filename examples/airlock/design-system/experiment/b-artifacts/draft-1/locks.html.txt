@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0a12" />
+<title>Locks | Airlock</title>
+<meta name="description" content="Resource locking: named, with TTL. Agent A locks npm-install, Agent B sees it's held and backs off." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script type="module" src="/src/ds.js"></script>
+</head>
+<body>
+<div class="ds-orbs" aria-hidden="true">
+  <div class="ds-orb ds-orb--1"></div>
+  <div class="ds-orb ds-orb--2"></div>
+  <div class="ds-orb ds-orb--3"></div>
+</div>
+
+<section class="ds-section" id="top">
+  <div class="ds-container ds-container--medium ds-center">
+    <a class="ds-btn ds-btn--ghost" href="/">← Airlock home</a>
+    <span class="ds-label ds-badge">22 MCP Tools</span>
+    <h1 class="ds-h1">
+      Locks.
+      <span class="ds-accent">Agent B sees it's held and backs off.</span>
+    </h1>
+    <p class="ds-body">Agent A locks <code class="ds-code">npm-install</code>. No conflicts. No manual work.</p>
+
+    <div class="ds-surface-1 ds-copy-row">
+      <code class="ds-code" id="hero-install-cmd">brew install adamorad/tap/airlock</code>
+      <button class="ds-btn ds-btn--ghost ds-copy-btn" data-copy="hero-install-cmd" aria-label="Copy install command">Copy</button>
+    </div>
+
+    <div class="ds-grid" aria-hidden="true">
+      <div class="ds-surface-2 ds-terminal">
+        <div class="ds-terminal__bar"><span class="ds-small">Subagent A: refactor auth</span></div>
+        <div class="ds-terminal__body">
+          <div>&gt; lock_resource("file:src/auth.ts")</div>
+          <div><span class="ds-t-ok">✓</span> <span class="ds-t-key">locked:</span> true</div>
+          <div>&gt; editing src/auth.ts</div>
+          <div class="ds-t-dim">+ added OAuth handler</div>
+        </div>
+      </div>
+      <div class="ds-surface-2 ds-terminal">
+        <div class="ds-terminal__bar"><span class="ds-small">Subagent B: add 2FA</span></div>
+        <div class="ds-terminal__body">
+          <div>&gt; lock_resource("file:src/auth.ts")</div>
+          <div><span class="ds-t-fail">✗</span> <span class="ds-t-key">locked:</span> false</div>
+          <div class="ds-t-dim">held_by: "subagent-A"</div>
+          <div class="ds-t-dim">&gt; waiting for src/auth.ts</div>
+        </div>
+      </div>
+    </div>
+
+    <a class="ds-scroll-hint" href="#tools">The five lock tools <span class="ds-scroll-arrow" aria-hidden="true">↓</span></a>
+  </div>
+</section>
+
+<section class="ds-section" id="tools">
+  <div class="ds-container ds-container--narrow">
+    <div class="ds-stack ds-gap-3">
+      <span class="ds-label">22 MCP Tools</span>
+      <h2 class="ds-h2">Locks</h2>
+      <p class="ds-body">Resource locking: named, with TTL.</p>
+    </div>
+    <div class="ds-stack ds-gap-3" role="list" aria-label="Locks tools">
+      <div class="ds-surface-1 ds-card" role="listitem">
+        <span class="ds-label">Locks</span>
+        <div class="ds-row">
+          <span class="ds-pill">lock_resource</span>
+          <span class="ds-pill">unlock_resource</span>
+          <span class="ds-pill">renew_lock</span>
+          <span class="ds-pill">list_locks</span>
+          <span class="ds-pill">lock_resources</span>
+        </div>
+      </div>
+    </div>
+    <a class="ds-scroll-hint" href="#vs">How does it compare? <span class="ds-scroll-arrow" aria-hidden="true">↓</span></a>
+  </div>
+</section>
+
+<section class="ds-section" id="vs">
+  <div class="ds-container ds-container--wide">
+    <div class="ds-stack ds-gap-3 ds-center">
+      <span class="ds-label">The Landscape</span>
+      <h2 class="ds-h2">Other tools store memory. <span class="ds-accent">Airlock prevents conflicts.</span></h2>
+      <p class="ds-body">Session-scoped servers die with the session that spawned them. Airlock is a daemon. It outlives every session and arbitrates between all of them.</p>
+    </div>
+
+    <div class="ds-surface-2 ds-table-wrap">
+      <table class="ds-table">
+        <thead>
+          <tr>
+            <th scope="col"><span class="ds-visually-hidden">Capability</span></th>
+            <th scope="col">Airlock</th>
+            <th scope="col">Session-Scoped MCP</th>
+            <th scope="col">Memory Layers</th>
+            <th scope="col">DIY</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Cross-session locks</th>
+            <td><span class="ds-status ds-status--yes" aria-label="Yes">✓</span></td>
+            <td><span class="ds-status ds-status--no" aria-label="No">✗</span></td>
+            <td><span class="ds-status ds-status--no" aria-label="No">✗</span></td>
+            <td><span class="ds-status ds-status--partial" aria-label="Possible with effort">~</span></td>
+          </tr>
+          <tr>
+            <th scope="row">TTL auto-expiry</th>
+            <td><span class="ds-status ds-status--yes" aria-label="Yes">✓</span></td>
+            <td><span class="ds-status ds-status--no" aria-label="No">✗</span></td>
+            <td><span class="ds-status ds-status--no" aria-label="No">✗</span></td>
+            <td><span class="ds-status ds-status--no" aria-label="No">✗</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Real-time arbitration</th>
+            <td><span class="ds-status ds-status--yes" aria-label="Yes">✓</span></td>
+            <td><span class="ds-status ds-status--partial" aria-label="Possible with effort">~</span></td>
+            <td><span class="ds-status ds-status--no" aria-label="No">✗</span></td>
+            <td><span class="ds-status ds-status--partial" aria-label="Possible with effort">~</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="ds-small"><span class="ds-status ds-status--yes" aria-hidden="true">✓</span> built in, <span class="ds-status ds-status--partial" aria-hidden="true">~</span> possible with effort, <span class="ds-status ds-status--no" aria-hidden="true">✗</span> not really</p>
+    <a class="ds-scroll-hint" href="#compare">vs. other approaches <span class="ds-scroll-arrow" aria-hidden="true">↓</span></a>
+  </div>
+</section>
+
+<section class="ds-section" id="compare">
+  <div class="ds-container ds-container--wide">
+    <div class="ds-stack ds-gap-3 ds-center">
+      <span class="ds-label">Why Airlock</span>
+      <h2 class="ds-h2">Three approaches. <span class="ds-accent">One that actually works.</span></h2>
+      <p class="ds-body">How do your agents coordinate shared resources when they all run at once?</p>
+    </div>
+
+    <div class="ds-grid">
+      <div class="ds-surface-1 ds-card">
+        <h3 class="ds-h3">Shell Workarounds</h3>
+        <p class="ds-small">lockfiles, flock, manual scripts</p>
+        <ul class="ds-rows">
+          <li class="ds-rows__item"><span class="ds-dot ds-dot--no" aria-hidden="true"></span><span class="ds-small">Resource locking: No atomic, named locks</span></li>
+          <li class="ds-rows__item"><span class="ds-dot ds-dot--no" aria-hidden="true"></span><span class="ds-small">Multi-agent safe: No, race conditions</span></li>
+        </ul>
+      </div>
+
+      <div class="ds-surface-1 ds-card">
+        <h3 class="ds-h3">Session-Scoped Skills</h3>
+        <p class="ds-small">claude code skills, one session</p>
+        <ul class="ds-rows">
+          <li class="ds-rows__item"><span class="ds-dot ds-dot--no" aria-hidden="true"></span><span class="ds-small">Resource locking: No cross-session locking</span></li>
+          <li class="ds-rows__item"><span class="ds-dot ds-dot--no" aria-hidden="true"></span><span class="ds-small">Multi-agent safe: No, one session only</span></li>
+        </ul>
+      </div>
+
+      <div class="ds-surface-2 ds-card ds-card--featured">
+        <span class="ds-label ds-badge">Recommended</span>
+        <h3 class="ds-h3">Airlock MCP</h3>
+        <p class="ds-small">airlock, shared daemon</p>
+        <ul class="ds-rows">
+          <li class="ds-rows__item"><span class="ds-dot ds-dot--yes" aria-hidden="true"></span><span class="ds-small">Resource locking: named, with TTL</span></li>
+          <li class="ds-rows__item"><span class="ds-dot ds-dot--yes" aria-hidden="true"></span><span class="ds-small">Multi-agent safe: any MCP client</span></li>
+        </ul>
+      </div>
+    </div>
+    <a class="ds-scroll-hint" href="#install">Install <span class="ds-scroll-arrow" aria-hidden="true">↓</span></a>
+  </div>
+</section>
+
+<section class="ds-section" id="install">
+  <div class="ds-container ds-container--narrow">
+    <div class="ds-surface-1 ds-card">
+      <div class="ds-row ds-gap-3">
+        <span class="ds-label ds-badge" aria-hidden="true">1</span>
+        <h3 class="ds-h3">Install</h3>
+      </div>
+      <p class="ds-small">Homebrew on macOS or Linux.</p>
+      <div class="ds-surface-1 ds-copy-row">
+        <code class="ds-code" id="step1-cmd">brew install adamorad/tap/airlock</code>
+        <button class="ds-btn ds-btn--ghost ds-copy-btn" data-copy="step1-cmd" aria-label="Copy install command">Copy</button>
+      </div>
+    </div>
+
+    <div class="ds-surface-1 ds-card">
+      <div class="ds-row ds-gap-3">
+        <span class="ds-label ds-badge" aria-hidden="true">2</span>
+        <h3 class="ds-h3">Start the daemon</h3>
+      </div>
+      <p class="ds-small">Registers the service so Airlock starts at login: launchd on macOS, systemd on Linux.</p>
+      <div class="ds-surface-1 ds-copy-row">
+        <code class="ds-code" id="step2-cmd">airlock install-service</code>
+        <button class="ds-btn ds-btn--ghost ds-copy-btn" data-copy="step2-cmd" aria-label="Copy install-service command">Copy</button>
+      </div>
+    </div>
+
+    <div class="ds-surface-1 ds-card">
+      <div class="ds-row ds-gap-3">
+        <span class="ds-label ds-badge" aria-hidden="true">3</span>
+        <h3 class="ds-h3">Configure your agent</h3>
+      </div>
+      <p class="ds-small">Point any MCP-compatible agent at the daemon.</p>
+      <div class="ds-surface-1 ds-copy-row">
+        <code class="ds-code" id="step3-cmd">claude mcp add --transport http airlock http://localhost:27183</code>
+        <button class="ds-btn ds-btn--ghost ds-copy-btn" data-copy="step3-cmd" aria-label="Copy MCP add command">Copy</button>
+      </div>
+    </div>
+
+    <a class="ds-scroll-hint" href="/">← Airlock home</a>
+  </div>
+</section>
+</body>
+</html>

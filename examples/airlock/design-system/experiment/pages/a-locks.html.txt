@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a12" />
+    <title>Locks — Airlock MCP tools</title>
+    <meta name="description" content="Locks, one of five groups in the 22 MCP tools, all on 127.0.0.1:27183. Any MCP-compatible agent, one shared daemon." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="bg-orbs" aria-hidden="true">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <main class="lk">
+      <div class="lk-inner">
+
+        <a class="lk-back" href="/">&larr; Airlock</a>
+
+        <header class="lk-head">
+          <span class="fold2-label">22 MCP Tools</span>
+          <h1>Locks</h1>
+          <p>Five groups — Locks, Notes &amp; atomic state, Presence, Events, and Tasks — all on <code>127.0.0.1:27183</code>. Any MCP-compatible agent, one shared daemon.</p>
+          <div class="install-cmd-wrap">
+            <code id="hero-install-cmd">brew install adamorad/tap/airlock</code>
+            <button class="copy-btn" data-copy="hero-install-cmd" aria-label="Copy install command">Copy</button>
+          </div>
+        </header>
+
+        <section class="lk-section" aria-labelledby="lk-tools">
+          <h2 id="lk-tools">Locks</h2>
+          <div class="tool-group">
+            <div class="tool-pills">
+              <span class="tool-pill">lock_resource</span>
+              <span class="tool-pill">unlock_resource</span>
+              <span class="tool-pill">renew_lock</span>
+              <span class="tool-pill">list_locks</span>
+              <span class="tool-pill">lock_resources</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="lk-section" aria-labelledby="lk-demo">
+          <h2 id="lk-demo">Your agents are stepping on each other. Airlock fixes that.</h2>
+          <div class="terminal-pair" role="group" aria-label="Two subagents locking src/auth.ts">
+<!-- Subagent A -->
+          <div class="terminal-card">
+            <div class="terminal-titlebar">
+              <div class="terminal-dots">
+                <span class="terminal-dot terminal-dot--red"></span>
+                <span class="terminal-dot terminal-dot--yellow"></span>
+                <span class="terminal-dot terminal-dot--green"></span>
+              </div>
+              <span class="terminal-title">Subagent A — refactor auth</span>
+            </div>
+            <div class="terminal-body">
+              <div><span class="t-prompt">&gt;</span> <span class="t-cmd">lock_resource("file:src/auth.ts")</span></div>
+              <div><span class="t-ok">✓</span> <span class="t-key">locked:</span> <span class="t-val">true</span></div>
+              <div><span class="t-prompt">&gt;</span> <span class="t-cmd">editing src/auth.ts</span></div>
+              <div><span class="t-dim">&nbsp;&nbsp;+ added OAuth handler</span></div>
+            </div>
+          </div>
+<!-- Subagent B -->
+          <div class="terminal-card">
+            <div class="terminal-titlebar">
+              <div class="terminal-dots">
+                <span class="terminal-dot terminal-dot--red"></span>
+                <span class="terminal-dot terminal-dot--yellow"></span>
+                <span class="terminal-dot terminal-dot--green"></span>
+              </div>
+              <span class="terminal-title">Subagent B — add 2FA</span>
+            </div>
+            <div class="terminal-body">
+              <div><span class="t-prompt">&gt;</span> <span class="t-cmd">lock_resource("file:src/auth.ts")</span></div>
+              <div><span class="t-fail">✗</span> <span class="t-key">locked:</span> <span class="t-val">false</span></div>
+              <div><span class="t-dim">&nbsp;&nbsp;held_by: "subagent-A"</span></div>
+              <div><span class="t-prompt">&gt;</span> <span class="t-dim">waiting for src/auth.ts…</span></div>
+            </div>
+          </div>
+          </div>
+          <div class="compare-insight">
+            <span class="compare-insight-dot"></span>
+            <p>Agent A locks <code>npm-install</code>, Agent B sees it's held and backs off. No conflicts. No manual work.</p>
+          </div>
+        </section>
+
+        <section class="lk-section" aria-labelledby="lk-compare">
+          <h2 id="lk-compare">Resource locking</h2>
+          <div class="compare-grid">
+            <div class="compare-card">
+              <div class="compare-card-title">Shell Workarounds</div>
+              <div class="compare-card-subtitle">lockfiles · flock · manual scripts</div>
+              <ul class="compare-rows"><li class="compare-row compare-row--no"><span class="compare-row-dot"></span><span class="compare-row-text"><span class="compare-row-cat">Resource locking</span><span class="compare-row-val">No atomic, named locks</span></span></li></ul>
+            </div>
+            <div class="compare-card">
+              <div class="compare-card-title">Session-Scoped Skills</div>
+              <div class="compare-card-subtitle">claude code skills · one session</div>
+              <ul class="compare-rows"><li class="compare-row compare-row--no"><span class="compare-row-dot"></span><span class="compare-row-text"><span class="compare-row-cat">Resource locking</span><span class="compare-row-val">No cross-session locking</span></span></li></ul>
+            </div>
+            <div class="compare-card compare-card--featured">
+              <div class="compare-card-badge">Recommended</div>
+              <div class="compare-card-title">Airlock MCP</div>
+              <div class="compare-card-subtitle">airlock · shared daemon</div>
+              <ul class="compare-rows"><li class="compare-row compare-row--yes"><span class="compare-row-dot"></span><span class="compare-row-text"><span class="compare-row-cat">Resource locking</span><span class="compare-row-val">✓ named, with TTL</span></span></li></ul>
+            </div>
+          </div>
+
+          <div class="compare-matrix-wrap" tabindex="0" role="region" aria-label="Locking comparison table, scrolls sideways on narrow screens">
+            <table class="compare-matrix">
+              <thead>
+                <tr>
+                  <th class="cm-cap-head" scope="col"><span class="visually-hidden">Capability</span></th>
+                  <th scope="col"><span class="cm-col-name">Session-Scoped MCP</span><span class="cm-col-sub">Node · per-session</span></th>
+                  <th scope="col"><span class="cm-col-name">Memory Layers</span><span class="cm-col-sub">mem0 · graphs</span></th>
+                  <th scope="col"><span class="cm-col-name">DIY</span><span class="cm-col-sub">Redis · lockfiles</span></th>
+                  <th scope="col" class="cm-col-airlock"><span class="cm-col-name">Airlock</span><span class="cm-col-sub">this one</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row" class="cm-cap">Cross-session locks</th><td class="cm-no">✗</td><td class="cm-no">✗</td><td class="cm-partial">~</td><td class="cm-yes cm-col-airlock">✓</td></tr>
+                <tr><th scope="row" class="cm-cap">TTL auto-expiry</th><td class="cm-no">✗</td><td class="cm-no">✗</td><td class="cm-no">✗</td><td class="cm-yes cm-col-airlock">✓</td></tr>
+                <tr><th scope="row" class="cm-cap">Real-time arbitration</th><td class="cm-partial">~</td><td class="cm-no">✗</td><td class="cm-partial">~</td><td class="cm-yes cm-col-airlock">✓</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="compare-legend"><span class="cm-yes">✓</span> built in&nbsp;&nbsp;·&nbsp;&nbsp;<span class="cm-partial">~</span> possible with effort&nbsp;&nbsp;·&nbsp;&nbsp;<span class="cm-no">✗</span> not really</p>
+
+          <div class="compare-insight">
+            <span class="compare-insight-dot"></span>
+            <p>Session-scoped servers die with the session that spawned them. Airlock is a daemon — it outlives every session and arbitrates between all of them.</p>
+          </div>
+        </section>
+
+        <section class="lk-section" aria-labelledby="lk-install">
+          <h2 id="lk-install">Install</h2>
+          <div class="setup-steps">
+            <div class="step-card">
+              <div class="step-card-header"><div class="step-num" aria-hidden="true">1</div><p class="step-title">Install</p></div>
+              <p class="step-desc">Homebrew on macOS or Linux. Or build from source with <code class="lk-step-code">go install github.com/adamorad/airlock/v2@latest</code>.</p>
+              <div class="config-row"><code id="step1-cmd">brew install adamorad/tap/airlock</code><button class="copy-btn" data-copy="step1-cmd" aria-label="Copy install command">Copy</button></div>
+            </div>
+            <div class="step-card">
+              <div class="step-card-header"><div class="step-num" aria-hidden="true">2</div><p class="step-title">Start the daemon</p></div>
+              <p class="step-desc">Registers the service so Airlock starts at login — launchd on macOS, systemd on Linux.</p>
+              <div class="config-row"><code id="step2-cmd">airlock install-service</code><button class="copy-btn" data-copy="step2-cmd" aria-label="Copy install-service command">Copy</button></div>
+            </div>
+            <div class="step-card">
+              <div class="step-card-header"><div class="step-num" aria-hidden="true">3</div><p class="step-title">Configure your agent</p></div>
+              <p class="step-desc">Point any MCP-compatible agent at the daemon. On Linux, add a bearer token from <code class="lk-step-code">~/.airlock/token</code>.</p>
+              <div class="config-row"><code id="step3-cmd">claude mcp add --transport http airlock http://localhost:27183</code><button class="copy-btn" data-copy="step3-cmd" aria-label="Copy MCP add command">Copy</button></div>
+            </div>
+          </div>
+        </section>
+
+        <a class="lk-back" href="/">&larr; Airlock</a>
+      </div>
+    </main>
+
+    <script type="module" src="/src/locks.js"></script>
+  </body>
+</html>

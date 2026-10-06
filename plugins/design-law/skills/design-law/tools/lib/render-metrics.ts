@@ -35,6 +35,13 @@ export type Metrics = {
     horizontalScroll: boolean;
     elementsBeyondViewport: string[];
   };
+  features: {
+    gradientBackgrounds: number;
+    gradientText: number;
+    backdropFilters: number;
+    filterBlurs: number;
+    animated: number;
+  };
   clipped: Array<{ selector: string; text: string; reason: string }>;
   overlaps: Array<{ a: string; b: string; area: number }>;
 };
@@ -136,6 +143,7 @@ function collect() {
     shadows: {} as Record<string, number>,
     contrastFailures: [] as any[],
     contrastIndeterminate: 0,
+    features: { gradientBackgrounds: 0, gradientText: 0, backdropFilters: 0, filterBlurs: 0, animated: 0 },
     clipped: [] as any[],
     overlaps: [] as any[],
     elementsBeyondViewport: [] as string[],
@@ -147,6 +155,10 @@ function collect() {
   for (const el of Array.from(document.body.querySelectorAll("*"))) {
     if (!visible(el)) continue;
     const cs = getComputedStyle(el);
+    if (/gradient/.test(cs.backgroundImage)) out.features.gradientBackgrounds++;
+    if (cs.backdropFilter && cs.backdropFilter !== "none") out.features.backdropFilters++;
+    if (/blur/.test(cs.filter)) out.features.filterBlurs++;
+    if (cs.animationName && cs.animationName !== "none") out.features.animated++;
 
     if (cs.borderRadius !== "0px") {
       const r = el.getBoundingClientRect();
@@ -228,7 +240,7 @@ function collect() {
           (tr.top < pr.top - 1 || tr.bottom > pr.bottom + 1))
       ) {
         // ignore containers that scroll on purpose
-        if (ps.overflowX === "auto" || ps.overflowX === "scroll") continue;
+        if (ps.overflowX === "auto" || ps.overflowX === "scroll") break;
         out.clipped.push({
           selector: sel(el),
           text,
@@ -267,6 +279,11 @@ function collect() {
         indeterminate = true;
         break;
       }
+    }
+    const fill = parse((cs as any).webkitTextFillColor || cs.color);
+    if (fill[3] === 0 && parse(cs.color)[3] > 0) {
+      indeterminate = true;
+      out.features.gradientText++;
     }
     const fg = parse(cs.color);
     const effective = blend(
@@ -380,6 +397,7 @@ export async function auditRoutes(opts: {
           shadows: m.shadows,
           contrastFailures: m.contrastFailures,
           contrastIndeterminate: m.contrastIndeterminate,
+          features: m.features,
           overflow: {
             docScrollWidth: m.docScrollWidth,
             viewportWidth: m.viewportWidth,

@@ -14,7 +14,7 @@ Numbered, dated bans in one `DESIGN.md`. A closed vocabulary so the wrong value 
 [![GitHub stars](https://img.shields.io/github/stars/adamorad/design-law?style=for-the-badge)](https://github.com/adamorad/design-law/stargazers)
 [![Last commit](https://img.shields.io/github/last-commit/adamorad/design-law?style=for-the-badge)](https://github.com/adamorad/design-law/commits/main)
 
-[**Install**](#install) &nbsp;·&nbsp; [**Quick start**](#quick-start) &nbsp;·&nbsp; [**How it works**](#how-it-works) &nbsp;·&nbsp; [**The checker**](#the-checker) &nbsp;·&nbsp; [**Results**](#results-from-the-first-run) &nbsp;·&nbsp; [**Example**](examples/portfolio) &nbsp;·&nbsp; [**FAQ**](#faq)
+[**Install**](#install) &nbsp;·&nbsp; [**Quick start**](#quick-start) &nbsp;·&nbsp; [**How it works**](#how-it-works) &nbsp;·&nbsp; [**The checker**](#the-checker) &nbsp;·&nbsp; [**Results**](#results-from-the-worked-example) &nbsp;·&nbsp; [**Example**](examples/airlock) &nbsp;·&nbsp; [**FAQ**](#faq)
 
 </div>
 
@@ -34,7 +34,7 @@ This skill tests a different method, from Mate Security's article *"A Design Sys
 
 This repo is the skill that does all of that on an existing codebase, plus the tools it uses and a full worked run on a real portfolio site, including the parts that did not go well.
 
-> **Read [the results](#results-from-the-first-run) before you adopt it.** In the first run the checker caught nothing on the agent that read the rules, and the page that passed was the weaker one by eye. The method buys consistency, not taste.
+> **Read [the results](#results-from-the-worked-example) before you adopt it.** In the worked example the checker caught nothing on the agent that read the rules, and the page that passed with zero findings was the weaker one by eye. The method buys consistency, not taste.
 
 ## What you get
 
@@ -43,10 +43,11 @@ This repo is the skill that does all of that on an existing codebase, plus the t
 | **Skill** | A phased workflow an agent follows on your repo: recon, baseline drift, decide, write the law, vocabulary, recipes, checker, A/B test, report | [`SKILL.md`](plugins/design-law/skills/design-law/SKILL.md) |
 | **`DESIGN.md` template** | Numbered sections, absolute rules, `Decided <date>`, adoption counts, "neighbour is debt" clause | [`references/DESIGN.template.md`](plugins/design-law/skills/design-law/references/DESIGN.template.md) |
 | **Render audit** | Playwright at 1280 and 390, light and dark: distinct sizes, weights, colours, radii, shadows, contrast (opacity and stacked backgrounds composited), overflow, clipping, overlap | [`tools/render-audit.ts`](plugins/design-law/skills/design-law/tools/render-audit.ts) |
-| **Static scan** | Counts colour literals, arbitrary Tailwind values, inline styles, opacity-muted colours, duplicate class strings | [`tools/scan-static.ts`](plugins/design-law/skills/design-law/tools/scan-static.ts) |
-| **`check-ui`** | 25 static rules (AST-based) plus a render check, each finding citing a `DESIGN.md` section and a fix | [`tools/check-ui`](plugins/design-law/skills/design-law/tools/check-ui) |
+| **Static scans** | Counts colour literals, arbitrary Tailwind values, inline styles, opacity-muted colours, duplicate class strings (`scan-static.ts`, TSX/Tailwind) or colour literals, font sizes, radii, shadows, gradients, blur, dead classes (`scan-css.ts`, plain CSS) | [`tools/`](plugins/design-law/skills/design-law/tools) |
+| **`check-ui`** (React + Tailwind) | 25 static rules (TypeScript AST) plus a render check, each finding citing a `DESIGN.md` section and a fix | [`tools/check-ui`](plugins/design-law/skills/design-law/tools/check-ui) |
+| **`check-ui-css`** (HTML + plain CSS) | 24 static rules (parse5 + postcss) plus a render check that also flags a scrolling table hiding its key column | [`tools/check-ui-css`](plugins/design-law/skills/design-law/tools/check-ui-css) |
 | **Recipe + wrapper guides** | How to write recipes and the vocabulary without leaving escape hatches | [`references/`](plugins/design-law/skills/design-law/references) |
-| **Worked example** | A real run: law, wrappers, 5 recipes, A/B artifacts, screenshots, report | [`examples/portfolio`](examples/portfolio) |
+| **Worked example** | A full run on a real Vite site (airlock-web.vercel.app): law, `ds.css` vocabulary, 5 recipes, A/B artifacts, screenshots, report | [`examples/airlock`](examples/airlock) |
 
 ## Install
 
@@ -72,7 +73,7 @@ cd design-system && npm install
 npx playwright install chromium   # skip if you already have it
 ```
 
-Requirements: Node 20+. The static checker targets **React/TSX with Tailwind**. The render audit works on any site you can serve. The tools were tested on Node 26, Playwright 1.63, TypeScript 5.9 and tsx 4.
+Requirements: Node 20+. Two static checkers: `check-ui` for **React/TSX with Tailwind**, `check-ui-css` for **HTML with plain CSS** (the one the worked example uses). The render audit works on any site you can serve. The tools were tested on Node 26, Playwright 1.63, TypeScript 5.9 and tsx 4.
 
 ## Quick start
 
@@ -97,12 +98,13 @@ Run the tools yourself at any time:
 ```bash
 cd design-system
 npm test                                                     # checker self-tests
-npx tsx check-ui/index.ts src/app/new-page                   # static check, exits 1 on findings
+npx tsx check-ui/index.ts src/app/new-page                   # React/Tailwind static check, exits 1 on findings
+DS_CSS=src/ds.css npx tsx check-ui-css/index.ts pages/new.html   # HTML/CSS variant
 npx tsx check-ui/index.ts src --render http://localhost:3000 --routes /,/new-page
 npx tsx render-audit.ts --base http://localhost:3000 --routes / --out shots --label baseline --json baseline.json
 ```
 
-`npm test` expects a project layout: a `DESIGN.md`, `recipes/examples/` and your wrapper folder, because its tests check that recipe examples pass and every rule cites a real section. Run it after the skill's phases 3 to 5, not on the bare tools.
+`npm test` / `npm run test:css` expect a project layout: a `DESIGN.md`, `recipes/examples/` and your vocabulary (wrapper folder or `ds.css`, via `DS_CSS`), because the tests check that recipe examples pass and every rule cites a real section. Run them after the skill's phases 3 to 5, not on the bare tools.
 
 ## How it works
 
@@ -146,13 +148,15 @@ import { Section, Heading, Text, Button } from "@/components/ds";
 </Section>
 ```
 
-`text-lg`, `rounded-3xl`, `shadow-xl`, `bg-gray-100` do not appear in product code, so they cannot be wrong. Wrappers expose closed unions (`level="page" | "section" | "card" | "card-featured"`), never a free class string for type or colour. The wrappers from the example run are in [`examples/portfolio/ds`](examples/portfolio/ds).
+`text-lg`, `rounded-3xl`, `shadow-xl`, `bg-gray-100` do not appear in product code, so they cannot be wrong. Wrappers expose closed unions (`level="page" | "section" | "card" | "card-featured"`), never a free class string for type or colour. In a site without components the vocabulary is a stylesheet of `ds-*` classes: see [`examples/airlock/airlock-web/src/ds.css`](examples/airlock/airlock-web/src/ds.css). Pages may use only those classes, no inline styles and no page CSS.
 
 ### Recipes
 
-One file per recurring shape (hero, project grid, featured item, repo list, contact): when to use, when not, anatomy, rules obeyed, a typechecked example to copy, and a **What to surface** step, e.g. *"lead the description with the distinctive fact already in the text; if the first clause is generic, either rewrite it from the site's own words or don't feature the item."* See [`examples/portfolio/recipes`](examples/portfolio/recipes).
+One file per recurring shape (hero, project grid, featured item, repo list, contact): when to use, when not, anatomy, rules obeyed, a typechecked example to copy, and a **What to surface** step, e.g. *"lead the description with the distinctive fact already in the text; if the first clause is generic, either rewrite it from the site's own words or don't feature the item."* See [`examples/airlock/design-system/recipes`](examples/airlock/design-system/recipes).
 
 ## The checker
+
+### `check-ui` (React + Tailwind)
 
 `check-ui` parses TSX with the TypeScript compiler API, so it sees class strings in `className`, in `const CARD = "..."` strings, in template literals, in `style={{}}` objects, raw `<h2>`/`<button>` elements, and copy (emoji, em dashes, invented proof).
 
@@ -184,6 +188,42 @@ One file per recurring shape (hero, project grid, featured item, repo list, cont
 | `UI24` | §8.1 | Invented proof or marketing filler |
 | `UI25` | §5.7 | Inline style with a static value |
 
+### `check-ui-css` (HTML + plain CSS)
+
+Parses HTML with parse5 and CSS with postcss. In pages, only `ds-*` classes that exist in `ds.css` are allowed; no inline `style`, no `<style>`, no page CSS. Stylesheets outside `ds.css` are checked declaration by declaration.
+
+| Rule | Cites | What it flags |
+|---|---|---|
+| `UI01` | §0.2 | Class not from the ds-* vocabulary |
+| `UI02` | §0.2 | ds-* class that ds.css does not define |
+| `UI03` | §0.2 | Inline style attribute |
+| `UI04` | §0.2 | <style> element in a page |
+| `UI05` | §0.2 | Stylesheet or script other than the shell |
+| `UI06` | §9.2 | Emoji or decorative symbol in copy |
+| `UI07` | §9.1 | Invented proof or marketing filler |
+| `UI08` | §2.3 | Heading element without its ds class, h4-h6, or more than one h1 |
+| `UI09` | §6.5 | Table outside ds-table-wrap or without ds-table |
+| `UI10` | §7.2 | Raw <button> without ds-btn |
+| `UI11` | §7.5 | Status glyph without an accessible name |
+| `UI12` | §0.2 | Presentational element or attribute |
+| `UI13` | §6.4 | Positional section name (foldN, section-N) |
+| `UI14` | §7.3 | Copy row without a wrapping ds-copy-row, or code without an id |
+| `UI15` | §1.2 | Colour literal outside the token block |
+| `UI16` | §2.3 | Font size outside the role table |
+| `UI17` | §2.2 | Font weight other than 400, 500, 600 |
+| `UI18` | §3.1 | Border radius outside 8px, 16px, pill, 50% |
+| `UI19` | §4.2 | Shadow, glow, blur or filter outside the surface tokens |
+| `UI20` | §5.1 | Gradient other than the two text gradients |
+| `UI21` | §6.2 | Spacing off the 4/8/12/16/24/32/48/64 scale |
+| `UI22` | §8.1 | Animation, keyframes or hover transform |
+| `UI23` | §2.4 | Uppercase or letter-spacing outside ds-label |
+| `UI24` | §0.2 | Page-specific stylesheet |
+| `R01` | §1.6 | Text under 4.5:1 contrast (3:1 at 24px+) |
+| `R02` | §6.5 | Page scrolls sideways or element extends past the viewport |
+| `R03` | §7.3 | Text clipped by its container |
+| `R04` | §6.5 | Text overlapping text |
+| `R05` | §6.5 | Scrolling table hides its Airlock column at 390px |
+
 The render check (`--render <url>`) covers what static rules can't see: contrast under 4.5:1 (3:1 for large text), sideways scroll and elements past the viewport at 390px, text clipped by its container, text overlapping text.
 
 ```text
@@ -194,30 +234,33 @@ src/app/work/page.tsx:18  UI08 DESIGN.md 2.3  Raw text size (text-[13px])
 
 **Adapting it:** `rules.ts` is the default Tailwind/React rule set. Edit it so each rule matches a rule in *your* `DESIGN.md` and cites that section number; the test suite fails if a rule cites a section that doesn't exist, if any rule never fires on the "don't" fixture, or if a tagged fixture line goes unflagged.
 
-## Results from the first run
+## Results from the worked example
 
-First run: a Next.js 16 + Tailwind v4 portfolio, a one-page site. The brief: *add a case-study page for one listed project using only text already on the site*. Arm A had the repo. Arm B had `DESIGN.md`, recipes and the checker. Full write-up: [`examples/portfolio/EXPERIMENT.md`](examples/portfolio/EXPERIMENT.md).
+Subject: airlock-web.vercel.app, a one-page dark Vite site (vanilla HTML and CSS, violet glass cards, gradient headline, drifting orbs). The brief: *add a detail page for the Locks tool group using only text already on the home page*. Arm A branched from before the vocabulary existed (no `ds.css`, no config, no docs). Arm B had `DESIGN.md`, recipes, `ds.css` and the checker. Full write-up: [`examples/airlock/design-system/EXPERIMENT.md`](examples/airlock/design-system/EXPERIMENT.md).
 
-| | Existing home page | A (no docs) | B (with system) |
+| Dark, per width | Existing home page | A (no system) | B (with system) |
 |---|---|---|---|
-| Contrast failures / sideways scroll / clipped / overlap | 0 / 0 / 0 / 0 | 0 / 0 / 0 / 0 | 0 / 0 / 0 / 0 |
-| Distinct font sizes | 9 | 7 | 6 |
-| Shadows | 2 | 0 | 0 |
-| Radii | 4 | 2 | 2 |
-| `check-ui` findings | 184 (whole `src/`) | 23 | **0, on the first draft** |
+| Distinct font sizes | 21 | 15 | 8 |
+| Radii | 12 | 12 | 4 |
+| Box-shadow values | 8 | 8 | 1 |
+| Text under 4.5:1 contrast | 91 | 35 | **0** |
+| Airlock column hidden at 390px | yes | yes | no |
+| `check-ui-css` findings | 701 | 186 | **0, on the first draft** |
+| Page height at 1280px | n/a | 2,256px | 4,336px |
 
-| A (no docs) | B (with system) |
+| A (no system) | B (with system) |
 |---|---|
-| <img src="examples/portfolio/screenshots/A-work-lin-agent-1280-light.png" width="420"> | <img src="examples/portfolio/screenshots/B-work-lin-agent-1280-light.png" width="420"> |
+| <img src="examples/airlock/design-system/experiment/a-shots/A-tools-locks-html-1280-dark.png" width="420"> | <img src="examples/airlock/design-system/experiment/b-shots/B-tools-locks-html-1280-dark.png" width="420"> |
 
 **What it showed, honestly:**
 
-- B's first checker run found **nothing**. The wrappers and the read rules left almost nothing to get wrong. The checker's detection is proven by its fixture tests, not by this run.
-- By eye, **A's page is better**: a clear lede-then-support hierarchy, a screenshot large enough to read, site header and footer, and wording that stayed inside the brief. B's page repeated its title, linked the same URL twice, showed an unreadable screenshot and added two strings that weren't on the site. The checker and the render check both passed it.
-- A was **not a clean control**: the repo already contained the wrappers and tokens, and A imported three of them.
-- It exposed gaps in the system itself: the `Card` wrapper forced a title and link so the hero recipe duplicated the heading, there was no recipe for a detail-page body, and `Nav`/`Footer` sat outside the vocabulary so B left them out.
+- B's first checker run found **nothing**. B assembled its page from recipe examples, which pass the checker by construction. The checker's detection is proven by its fixture tests (the "don't" files trip every rule), not by this run.
+- B is cleaner on every audited number, but largely because A **reused the home page's existing classes and inherited all of its debt**, while B reused `ds.css`. That is a difference between reusing legacy and reusing the new vocabulary, not proof the rules improve a page.
+- By eye, **A's page is better**: compact, well ordered, verdicts readable at a glance. B's page is twice as tall, with four full-height sections and big empty gaps, repeats its "Locks" heading, and stacks the two hero terminals in one narrow column at 1280px. The static check and the render check both passed it.
+- The run exposed gaps in the system itself: `100svh` sections are the wrong default for a detail page, there is no detail-page recipe, the hero recipe causes the stacked terminals, and `ds.css` never sets a weight on `th`, so browsers bold table headers (probably why 700 weights still appear; unverified).
+- The checker did catch real things outside the A/B: two mistakes in the recipe examples (an undefined class, status glyphs with no accessible name) and, on the legacy home page, 91 low-contrast elements, a hidden Airlock column at 390px and install commands truncated with an ellipsis.
 
-Limits: one run per arm, same model in both arms, the rules were written by the person who ran the test, a small task, and B knew it would be checked. Treat it as a method demonstration, not evidence of an effect size.
+Limits: one run per arm, same model in both, the rules were written by the person who ran the test, B knew it would be checked, one small task on a one-page site. Treat it as a method demonstration, not an effect size. The React + Tailwind checker was validated the same way on a Next.js portfolio site in an earlier run; that run is not included here.
 
 ## Phases
 
@@ -246,16 +289,18 @@ plugins/design-law/
     tools/                        copy into <project>/design-system/
       check-ui/                   rules.ts, static.ts, render.ts, tests, fixtures
       lib/render-metrics.ts       Playwright measurements
-      render-audit.ts  scan-static.ts
-examples/portfolio/               a complete run on a real site
-  DESIGN.md  EXPERIMENT.md  recipes/  ds/  experiment/  screenshots/
+      check-ui-css/               HTML + plain CSS variant
+      render-audit.ts  scan-static.ts  scan-css.ts
+examples/airlock/                 a complete run on a real Vite site
+  design-system/                  DESIGN.md  EXPERIMENT.md  recipes/  experiment/  shots/
+  airlock-web/                    src/ds.css  src/ds.js  vite.config.js
 ```
 
 ## FAQ
 
-**Does it work without Tailwind?** The workflow, `DESIGN.md`, wrappers, recipes and render audit do. The static rules match Tailwind class names; rewrite `rules.ts` for CSS modules or CSS-in-JS.
+**Does it work without Tailwind or React?** Yes. `check-ui-css` handles plain HTML and CSS (the worked example). For CSS modules or CSS-in-JS, adapt `rules.ts` in either checker.
 
-**Will the checker flag my whole existing site?** Yes, by design: product code may only use wrappers, so every existing hand-written class counts as debt. The skill records that number and does not migrate existing pages.
+**Will the checker flag my whole existing site?** Yes, by design: new code may only use the vocabulary, so every existing hand-written class or declaration counts as debt (701 findings on the Airlock home page). The skill records that number and does not migrate existing pages.
 
 **Why ban `text-muted` in product code?** The rule is "type, colour, radius, border, shadow and opacity utilities live in the vocabulary". It is strict on purpose so that the first thing an agent has to do is reach for a wrapper. If that is too strict for you, relax rule `UI19` and record the decision in `DESIGN.md`.
 
@@ -265,7 +310,7 @@ examples/portfolio/               a complete run on a real site
 
 ## Contributing
 
-Issues and PRs welcome. Useful contributions: rule sets for CSS modules, styled-components and vanilla CSS; a clean-control A/B recipe; more worked examples (especially larger sites and failures). Keep every rule absolute, cited and tested.
+Issues and PRs welcome. Useful contributions: rule sets for CSS modules and styled-components; a clean-control A/B recipe; more worked examples (especially larger sites and failures). Keep every rule absolute, cited and tested.
 
 ## Credits
 

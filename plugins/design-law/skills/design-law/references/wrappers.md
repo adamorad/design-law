@@ -31,3 +31,10 @@ Rules for wrappers:
   do not end up in the CSS bundle.
 - `tsx` injects `__name` into functions passed to `page.evaluate`; define `window.__name = f => f` with
   `addInitScript` (the shipped render script already does).
+
+## No component framework (plain HTML + CSS)
+- Tokens: `--ds-*` custom properties in one `ds.css`. Component classes (`ds-h1`, `ds-surface-1`, `ds-btn--primary`, ...) are the "wrappers".
+- Pages may use only `ds-*` classes defined in `ds.css`: no inline `style`, no `<style>`, no page-specific CSS. The checker verifies each class exists.
+- Make `index.html`-style entry pages keep building: with Vite, a `vite.config.js` that enters every `.html` lets a new page be a new file.
+- `ds.css` itself must keep colour literals inside the `:root` token block (a test enforces it). Set a weight or size on element defaults (`th`, `strong`) too, or browsers will reintroduce banned values.
+- Ship example pages (recipes) that link `ds.css` by relative path so they render from `file://` for the render check.

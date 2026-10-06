@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recipe example: install-steps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../airlock-web/src/ds.css">
+</head>
+<body>
+<div class="ds-orbs" aria-hidden="true">
+  <div class="ds-orb ds-orb--1"></div>
+  <div class="ds-orb ds-orb--2"></div>
+  <div class="ds-orb ds-orb--3"></div>
+</div>
+<section class="ds-section" id="install">
+  <div class="ds-container ds-container--narrow">
+    <div class="ds-surface-1 ds-card">
+      <div class="ds-row ds-gap-3">
+        <span class="ds-label ds-badge" aria-hidden="true">1</span>
+        <h3 class="ds-h3">Install</h3>
+      </div>
+      <p class="ds-small">Homebrew on macOS or Linux.</p>
+      <div class="ds-surface-1 ds-copy-row">
+        <code class="ds-code" id="step1-cmd">brew install adamorad/tap/airlock</code>
+        <button class="ds-btn ds-btn--ghost ds-copy-btn" data-copy="step1-cmd" aria-label="Copy install command">Copy</button>
+      </div>
+    </div>
+
+    <div class="ds-surface-1 ds-card">
+      <div class="ds-row ds-gap-3">
+        <span class="ds-label ds-badge" aria-hidden="true">2</span>
+        <h3 class="ds-h3">Start the daemon</h3>
+      </div>
+      <p class="ds-small">Registers the service so Airlock starts at login: launchd on macOS, systemd on Linux.</p>
+      <div class="ds-surface-1 ds-copy-row">
+        <code class="ds-code" id="step2-cmd">airlock install-service</code>
+        <button class="ds-btn ds-btn--ghost ds-copy-btn" data-copy="step2-cmd" aria-label="Copy install-service command">Copy</button>
+      </div>
+    </div>
+
+    <div class="ds-surface-1 ds-card">
+      <div class="ds-row ds-gap-3">
+        <span class="ds-label ds-badge" aria-hidden="true">3</span>
+        <h3 class="ds-h3">Configure your agent</h3>
+      </div>
+      <p class="ds-small">Point any MCP-compatible agent at the daemon.</p>
+      <div class="ds-surface-1 ds-copy-row">
+        <code class="ds-code" id="step3-cmd">claude mcp add --transport http airlock http://localhost:27183</code>
+        <button class="ds-btn ds-btn--ghost ds-copy-btn" data-copy="step3-cmd" aria-label="Copy MCP add command">Copy</button>
+      </div>
+    </div>
+
+    <a class="ds-scroll-hint" href="#top">← Back to top</a>
+  </div>
+</section>
+</body>
+</html>

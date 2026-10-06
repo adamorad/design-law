@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recipe example: hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../airlock-web/src/ds.css">
+</head>
+<body>
+<div class="ds-orbs" aria-hidden="true">
+  <div class="ds-orb ds-orb--1"></div>
+  <div class="ds-orb ds-orb--2"></div>
+  <div class="ds-orb ds-orb--3"></div>
+</div>
+<section class="ds-section" id="top">
+  <div class="ds-container ds-container--medium ds-center">
+    <span class="ds-label ds-badge">AI Agent Coordination</span>
+    <h1 class="ds-h1">
+      Your agents are stepping on each other.
+      <span class="ds-accent">Airlock fixes that.</span>
+    </h1>
+    <p class="ds-body">A native daemon for macOS and Linux with an MCP server. AI agents lock files, serialize installs, and share state, without conflicts.</p>
+
+    <div class="ds-surface-1 ds-copy-row">
+      <code class="ds-code" id="hero-install-cmd">brew install adamorad/tap/airlock</code>
+      <button class="ds-btn ds-btn--ghost ds-copy-btn" data-copy="hero-install-cmd" aria-label="Copy install command">Copy</button>
+    </div>
+
+    <div class="ds-grid" aria-hidden="true">
+      <div class="ds-surface-2 ds-terminal">
+        <div class="ds-terminal__bar"><span class="ds-small">Subagent A: refactor auth</span></div>
+        <div class="ds-terminal__body">
+          <div>&gt; lock_resource("file:src/auth.ts")</div>
+          <div><span class="ds-t-ok">✓</span> <span class="ds-t-key">locked:</span> true</div>
+          <div>&gt; editing src/auth.ts</div>
+          <div class="ds-t-dim">+ added OAuth handler</div>
+        </div>
+      </div>
+      <div class="ds-surface-2 ds-terminal">
+        <div class="ds-terminal__bar"><span class="ds-small">Subagent B: add 2FA</span></div>
+        <div class="ds-terminal__body">
+          <div>&gt; lock_resource("file:src/auth.ts")</div>
+          <div><span class="ds-t-fail">✗</span> <span class="ds-t-key">locked:</span> false</div>
+          <div class="ds-t-dim">held_by: "subagent-A"</div>
+          <div class="ds-t-dim">&gt; waiting for src/auth.ts</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="ds-small">Works with Claude, Cursor, Copilot, Cline, Windsurf, and any MCP-compatible agent</p>
+    <a class="ds-scroll-hint" href="#vs">How does it compare? <span class="ds-scroll-arrow" aria-hidden="true">↓</span></a>
+  </div>
+</section>
+</body>
+</html>

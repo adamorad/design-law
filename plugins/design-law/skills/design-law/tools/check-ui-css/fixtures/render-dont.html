@@ -1,0 +1,19 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{margin:0;font:16px sans-serif;background:#0a0a12;color:#eee;padding:16px}
+.grey{color:#4e4e54}
+.wide{width:600px;background:#222}
+.clip{width:120px;height:20px;overflow:hidden;white-space:nowrap}
+.stack{position:relative;height:40px}
+.stack p{position:absolute;left:0;margin:0}
+.ds-table-wrap{width:100%;overflow-x:auto}
+.ds-table{min-width:540px;border-collapse:collapse}
+.ds-table th,.ds-table td{padding:8px 24px;white-space:nowrap}
+</style></head><body>
+<p class="grey">Tertiary grey, 2.4:1 on the page background</p>
+<div class="wide"><p>Fixed 600px block</p></div>
+<div class="clip"><span>This sentence is far too long for its container</span></div>
+<div class="stack"><p style="top:0">Overlap line one</p><p style="top:6px">Overlap line two</p></div>
+<div class="ds-table-wrap"><table class="ds-table"><thead><tr><th>Capability</th><th>Session-Scoped MCP</th><th>Memory Layers</th><th>DIY</th><th>Airlock</th></tr></thead><tbody><tr><td>Daemon</td><td>no</td><td>no</td><td>~</td><td>yes</td></tr></tbody></table></div>
+</body></html>

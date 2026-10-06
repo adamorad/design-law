@@ -1,0 +1,2 @@
+static: 0 finding(s) in airlock-web/tools/locks.html
+OK: 0 findings

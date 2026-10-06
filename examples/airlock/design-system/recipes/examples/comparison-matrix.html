@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recipe example: comparison-matrix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../airlock-web/src/ds.css">
+</head>
+<body>
+<div class="ds-orbs" aria-hidden="true">
+  <div class="ds-orb ds-orb--1"></div>
+  <div class="ds-orb ds-orb--2"></div>
+  <div class="ds-orb ds-orb--3"></div>
+</div>
+<section class="ds-section" id="vs">
+  <div class="ds-container ds-container--wide">
+    <div class="ds-stack ds-gap-3 ds-center">
+      <span class="ds-label">The Landscape</span>
+      <h2 class="ds-h2">Other tools store memory. <span class="ds-accent">Airlock prevents conflicts.</span></h2>
+      <p class="ds-body">Whole categories of tools touch this space: session-scoped MCP servers, memory layers, DIY locks. They answer "what happened." Airlock answers "what's happening right now."</p>
+    </div>
+
+    <div class="ds-surface-2 ds-table-wrap">
+      <table class="ds-table">
+        <thead>
+          <tr>
+            <th scope="col"><span class="ds-visually-hidden">Capability</span></th>
+            <th scope="col">Airlock</th>
+            <th scope="col">Session-Scoped MCP</th>
+            <th scope="col">Memory Layers</th>
+            <th scope="col">DIY</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Always-on daemon</th>
+            <td><span class="ds-status ds-status--yes" aria-label="Yes">✓</span></td>
+            <td><span class="ds-status ds-status--no" aria-label="No">✗</span></td>
+            <td><span class="ds-status ds-status--no" aria-label="No">✗</span></td>
+            <td><span class="ds-status ds-status--partial" aria-label="Possible with effort">~</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Cross-session locks</th>
+            <td><span class="ds-status ds-status--yes" aria-label="Yes">✓</span></td>
+            <td><span class="ds-status ds-status--no" aria-label="No">✗</span></td>
+            <td><span class="ds-status ds-status--no" aria-label="No">✗</span></td>
+            <td><span class="ds-status ds-status--partial" aria-label="Possible with effort">~</span></td>
+          </tr>
+          <tr>
+            <th scope="row">TTL auto-expiry</th>
+            <td><span class="ds-status ds-status--yes" aria-label="Yes">✓</span></td>
+            <td><span class="ds-status ds-status--no" aria-label="No">✗</span></td>
+            <td><span class="ds-status ds-status--no" aria-label="No">✗</span></td>
+            <td><span class="ds-status ds-status--no" aria-label="No">✗</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="ds-small"><span class="ds-status ds-status--yes" aria-hidden="true">✓</span> built in, <span class="ds-status ds-status--partial" aria-hidden="true">~</span> possible with effort, <span class="ds-status ds-status--no" aria-hidden="true">✗</span> not available</p>
+  </div>
+</section>
+</body>
+</html>

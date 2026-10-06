@@ -1,0 +1,16 @@
+/* Typical AI output. Test data, do not copy. */
+.hero-title { /* bad: file itself is a page stylesheet */
+  font-size: 11px; /* bad */
+  font-weight: 700; /* bad */
+  color: #9ca3af; /* bad */
+  border-radius: 24px; /* bad */
+  box-shadow: 0 0 40px rgba(124, 58, 237, 0.4); /* bad */
+  background: linear-gradient(135deg, #667eea, #764ba2); /* bad */
+  padding: 22px 10px; /* bad */
+  text-transform: uppercase; /* bad */
+  filter: blur(40px); /* bad */
+  backdrop-filter: blur(8px); /* bad */
+  animation: pulse 2s infinite; /* bad */
+}
+.hero-title:hover { transform: scale(1.1); } /* bad */
+@keyframes pulse { from { opacity: 0.5 } to { opacity: 1 } } /* bad */
