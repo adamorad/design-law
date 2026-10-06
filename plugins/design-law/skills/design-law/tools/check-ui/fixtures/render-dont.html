@@ -1,0 +1,14 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{margin:0;font:16px sans-serif;background:#fff;color:#111}
+.grey{color:#aaa}
+.wide{width:600px;background:#eee}
+.clip{width:120px;height:20px;overflow:hidden;white-space:nowrap}
+.stack{position:relative;height:40px}
+.stack p{position:absolute;left:0;margin:0}
+</style></head><body>
+<p class="grey">Muted grey data, 2.3:1 on white</p>
+<div class="wide"><p>Fixed 600px block</p></div>
+<div class="clip"><span>This sentence is far too long for its container</span></div>
+<div class="stack"><p style="top:0">Overlap line one</p><p style="top:6px">Overlap line two</p></div>
+</body></html>

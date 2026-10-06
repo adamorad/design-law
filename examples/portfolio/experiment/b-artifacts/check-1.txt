@@ -1,0 +1,2 @@
+static: 0 finding(s) in src/app/work/lin-agent
+OK: 0 findings

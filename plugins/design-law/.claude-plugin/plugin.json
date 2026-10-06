@@ -1,0 +1,8 @@
+{
+  "name": "design-law",
+  "description": "Agent-first design system for a codebase: numbered dated bans in one DESIGN.md, a closed vocabulary of tokens and wrapper components, page recipes, a checker whose findings cite DESIGN.md sections, and an A/B protocol to measure whether it changes what an agent builds.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Adam Morad"
+  }
+}

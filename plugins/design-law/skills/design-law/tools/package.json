@@ -1,0 +1,16 @@
+{
+  "name": "design-system-tools",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "playwright": "^1.63.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "check": "tsx check-ui/index.ts",
+    "test": "tsx --test check-ui/tests/*.test.ts",
+    "audit": "tsx render-audit.ts"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "design-law",
+  "owner": {
+    "name": "Adam Morad"
+  },
+  "metadata": {
+    "version": "0.1.0",
+    "description": "Claude Code plugin: an agent-first design system you can test."
+  },
+  "plugins": [
+    {
+      "name": "design-law",
+      "description": "Derive a DESIGN.md of numbered, dated bans from your existing UI, enforce it with a closed vocabulary and a checker, and A/B test whether it changes what an agent builds.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Adam Morad"
+      },
+      "source": "./plugins/design-law"
+    }
+  ]
+}

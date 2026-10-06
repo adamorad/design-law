@@ -1,0 +1,36 @@
+:root {
+  --background: #fafafa;
+  --foreground: #111113;
+  --muted: #6b6b70;
+  --card: #ffffff;
+  --border: #e4e4e7;
+  --accent: #2f5eea;
+  --accent-foreground: #fafafa;
+  /* DS tokens: same rendered values as the opacity modifiers they replace */
+  /* DS tokens: same rendered values as the opacity modifiers they replace */
+  --border-hover: color-mix(in oklab, var(--accent) 40%, transparent);
+  --border-hover: color-mix(in oklab, var(--accent) 40%, transparent);
+  --nav: color-mix(in oklab, var(--background) 80%, transparent);
+  --nav: color-mix(in oklab, var(--background) 80%, transparent);
+  --nav-border: color-mix(in oklab, var(--border) 80%, transparent);
+  --nav-border: color-mix(in oklab, var(--border) 80%, transparent);
+  --scrim: rgb(0 0 0 / 0.1);
+  --scrim: rgb(0 0 0 / 0.1);
+  --scrim-strong: rgb(0 0 0 / 0.25);
+  --scrim-strong: rgb(0 0 0 / 0.25);
+  --device-frame: #0b0b0d;
+  --device-frame: #0b0b0d;
+}
+}
+  /* DS tokens (design-system/DESIGN.md sections 1, 3, 4, 5) */
+  --color-border-hover: var(--border-hover);
+  --color-nav: var(--nav);
+  --color-nav-border: var(--nav-border);
+  --color-scrim: var(--scrim);
+  --color-scrim-strong: var(--scrim-strong);
+  --color-device-frame: var(--device-frame);
+  --radius-device: 2.75rem;
+  --radius-device-inner: 2.25rem;
+  --shadow-device: 0 25px 50px -12px rgb(0 0 0 / 0.2);
+  --container-intro: 60ch;
+}

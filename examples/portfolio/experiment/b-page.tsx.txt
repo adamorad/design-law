@@ -1,0 +1,47 @@
+import type { Metadata } from "next";
+import { ArrowLeft, ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import { Button, Card, Heading, Section, Text } from "@/components/ds";
+import { Reveal } from "@/components/reveal";
+
+export const metadata: Metadata = {
+  title: "Lin Agent | Adam Morad",
+  description:
+    "An AI agent that learns your voice and drafts LinkedIn posts, publishing only after you approve the exact text.",
+};
+
+export default function LinAgentPage() {
+  return (
+    <main className="flex-1">
+      <Section id="top" first>
+        <Reveal className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="flex flex-col items-start gap-6">
+            <Heading level="page">Lin Agent</Heading>
+            <Text variant="intro">
+              An AI agent that learns your voice and drafts LinkedIn posts,
+              publishing only after you approve the exact text.
+            </Text>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Button external href="https://shlif.app/">
+                Open Lin Agent
+                <ArrowUpRight size={18} />
+              </Button>
+              <Button variant="outline" href="/">
+                <ArrowLeft size={18} />
+                Back to home
+              </Button>
+            </div>
+          </div>
+          <Card
+            kind="site"
+            href="https://shlif.app/"
+            title="Lin Agent"
+            description="Runs on LinkedIn's official API from a single dashboard."
+            tags={["AI agent", "Multi-tenant", "LinkedIn API"]}
+            image="/projects/lin.jpg"
+            imageAlt="Lin Agent home page"
+          />
+        </Reveal>
+      </Section>
+    </main>
+  );
+}
