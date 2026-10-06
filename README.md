@@ -46,6 +46,8 @@ This repo is the skill that does all of that on an existing codebase, plus the t
 | **Static scans** | Counts colour literals, arbitrary Tailwind values, inline styles, opacity-muted colours, duplicate class strings (`scan-static.ts`, TSX/Tailwind) or colour literals, font sizes, radii, shadows, gradients, blur, dead classes (`scan-css.ts`, plain CSS) | [`tools/`](plugins/design-law/skills/design-law/tools) |
 | **`check-ui`** (React + Tailwind) | 25 static rules (TypeScript AST) plus a render check, each finding citing a `DESIGN.md` section and a fix | [`tools/check-ui`](plugins/design-law/skills/design-law/tools/check-ui) |
 | **`check-ui-css`** (HTML + plain CSS) | 24 static rules (parse5 + postcss) plus a render check that also flags a scrolling table hiding its key column | [`tools/check-ui-css`](plugins/design-law/skills/design-law/tools/check-ui-css) |
+| **Edit hook** | A PostToolUse hook that runs the checker on every file the agent writes and feeds findings back (exit 2), so the law binds even when the prompt forgets to say so; logs findings per check | [`tools/hooks`](plugins/design-law/skills/design-law/tools/hooks/check-on-edit.mjs) |
+| **Computed-style law** | `design-law.json` lists the allowed sizes, weights, families, radii and shadows; the render check flags any element whose *computed* style is outside it, including browser defaults | [`tools/lib/computed-law.ts`](plugins/design-law/skills/design-law/tools/lib/computed-law.ts) |
 | **Recipe + wrapper guides** | How to write recipes and the vocabulary without leaving escape hatches | [`references/`](plugins/design-law/skills/design-law/references) |
 | **Worked example** | A full run on a real Vite site (airlock-web.vercel.app): law, `ds.css` vocabulary, 5 recipes, A/B artifacts, screenshots, report | [`examples/airlock`](examples/airlock) |
 
@@ -234,6 +236,44 @@ src/app/work/page.tsx:18  UI08 DESIGN.md 2.3  Raw text size (text-[13px])
 
 **Adapting it:** `rules.ts` is the default Tailwind/React rule set. Edit it so each rule matches a rule in *your* `DESIGN.md` and cites that section number; the test suite fails if a rule cites a section that doesn't exist, if any rule never fires on the "don't" fixture, or if a tagged fixture line goes unflagged.
 
+## Making it bind
+
+### Edit hook
+
+The first two runs only ran the checker because the prompt told the agent to. The hook removes that dependency: after every `Edit`, `Write` or `MultiEdit`, it runs the project's `check-ui` on that file. Findings go back to the agent (exit code 2, stderr); a clean file is silent.
+
+- **Plugin install:** automatic (`hooks/hooks.json`); it does nothing in projects without `design-system/`.
+- **Manual:** the tools copy includes `design-system/hooks/check-on-edit.mjs`. Add to `.claude/settings.json`:
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/design-system/hooks/check-on-edit.mjs\"" }]
+      }
+    ]
+  }
+}
+```
+
+Tested end to end with headless Claude, both as a project setting and through `--plugin-dir`: asked to write a page with an inline style and an invented class, the agent received the two findings (with section numbers and fixes) and replaced them with vocabulary classes. The hook appends `{file, findings}` per check to `design-system/.hook-log.jsonl`, which gives A/B runs the first-draft finding count automatically. The hook runs after the write, so the file exists briefly in its bad state; it cannot prevent the edit. When a user instruction conflicts with the law, the agent in the test kept the violation and said so.
+
+### Computed-style law
+
+Source rules cannot see browser defaults. In the worked example, B's table headers rendered at weight 700 because nothing set `th`, and the law bans 700. `design-law.json` (template: [`references/design-law.template.json`](plugins/design-law/skills/design-law/references/design-law.template.json)) states the allowed computed values and the `DESIGN.md` section each cites; `check-ui --render` then reads every visible element's computed style:
+
+| Rule | Flags |
+|---|---|
+| `R06` | font size outside the allowed px list and fluid ranges |
+| `R07` | font weight outside the allowed list (browser defaults included) |
+| `R08` | font family outside the allowed list |
+| `R09` | border radius outside the allowed list (pill and circle opt-in) |
+| `R10` | shadow outside the allowed list |
+
+On the Airlock pages it found B's four `th` cells at weight 700 and nothing else, and flagged 12 radii, 12 shadow variants and 5 stray font sizes on A and the legacy home page. A test renders every recipe example against the law, so a vocabulary gap fails the suite instead of surfacing in a page.
+
 ## Results from the worked example
 
 Subject: airlock-web.vercel.app, a one-page dark Vite site (vanilla HTML and CSS, violet glass cards, gradient headline, drifting orbs). The brief: *add a detail page for the Locks tool group using only text already on the home page*. Arm A branched from before the vocabulary existed (no `ds.css`, no config, no docs). Arm B had `DESIGN.md`, recipes, `ds.css` and the checker. Full write-up: [`examples/airlock/design-system/EXPERIMENT.md`](examples/airlock/design-system/EXPERIMENT.md).
@@ -257,7 +297,7 @@ Subject: airlock-web.vercel.app, a one-page dark Vite site (vanilla HTML and CSS
 - B's first checker run found **nothing**. B assembled its page from recipe examples, which pass the checker by construction. The checker's detection is proven by its fixture tests (the "don't" files trip every rule), not by this run.
 - B is cleaner on every audited number, but largely because A **reused the home page's existing classes and inherited all of its debt**, while B reused `ds.css`. That is a difference between reusing legacy and reusing the new vocabulary, not proof the rules improve a page.
 - By eye, **A's page is better**: compact, well ordered, verdicts readable at a glance. B's page is twice as tall, with four full-height sections and big empty gaps, repeats its "Locks" heading, and stacks the two hero terminals in one narrow column at 1280px. The static check and the render check both passed it.
-- The run exposed gaps in the system itself: `100svh` sections are the wrong default for a detail page, there is no detail-page recipe, the hero recipe causes the stacked terminals, and `ds.css` never sets a weight on `th`, so browsers bold table headers (probably why 700 weights still appear; unverified).
+- The run exposed gaps in the system itself: `100svh` sections are the wrong default for a detail page, there is no detail-page recipe, the hero recipe causes the stacked terminals, and `ds.css` never set a weight on `th`, so browsers bolded the table headers; the computed-style check confirmed those four cells as the only violation on B's page, and `ds.css` now sets it.
 - The checker did catch real things outside the A/B: two mistakes in the recipe examples (an undefined class, status glyphs with no accessible name) and, on the legacy home page, 91 low-contrast elements, a hidden Airlock column at 390px and install commands truncated with an ellipsis.
 
 Limits: one run per arm, same model in both, the rules were written by the person who ran the test, B knew it would be checked, one small task on a one-page site. Treat it as a method demonstration, not an effect size. The React + Tailwind checker was validated the same way on a Next.js portfolio site in an earlier run; that run is not included here.
@@ -283,6 +323,7 @@ Guardrails baked into the skill: new branch only, never push or deploy, commit l
 .claude-plugin/marketplace.json
 plugins/design-law/
   .claude-plugin/plugin.json
+  hooks/hooks.json                  registers the edit hook
   skills/design-law/
     SKILL.md                      the workflow
     references/                   DESIGN / recipe templates, wrapper guide
@@ -290,6 +331,8 @@ plugins/design-law/
       check-ui/                   rules.ts, static.ts, render.ts, tests, fixtures
       lib/render-metrics.ts       Playwright measurements
       check-ui-css/               HTML + plain CSS variant
+      lib/computed-law.ts         design-law.json checker (R06-R10)
+      hooks/check-on-edit.mjs     PostToolUse hook
       render-audit.ts  scan-static.ts  scan-css.ts
 examples/airlock/                 a complete run on a real Vite site
   design-system/                  DESIGN.md  EXPERIMENT.md  recipes/  experiment/  shots/
